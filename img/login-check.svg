@@ -1,0 +1,10 @@
+<svg id="check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_2291" data-name="사각형 2291" width="20" height="20" transform="translate(0.12)" fill="rgba(0,0,0,0)"/>
+    </clipPath>
+  </defs>
+  <g id="check-2" data-name="check" transform="translate(-0.12)" clip-path="url(#clip-path)">
+    <path id="패스_8871" data-name="패스 8871" d="M9.063,15.75a.519.519,0,0,1-.368-.152L4.528,11.431a.521.521,0,1,1,.737-.737l3.8,3.8,7.965-7.965a.521.521,0,0,1,.737.737L9.431,15.6a.519.519,0,0,1-.368.152" transform="translate(-0.729 -1.062)" fill="#19ce60"/>
+  </g>
+</svg>

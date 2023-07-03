@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TkitaCaption</title>
+    <link href="../css/common.css" rel="stylesheet"/>
+    <link href="../css/dark.css" rel="stylesheet"/>
+    <link href="../js/semantic-ui-range/range.css" rel="stylesheet"/>
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body data-theme="dark-mode">
+<!-- <div class="window-setting">
+  <div class="top-logo">
+    <p>Tkita caption</p>
+  </div>
+  <div class="window-act">
+    <a href="" class="w-lower"></a>
+    <a href="" class="w-resize"></a>
+    <a href="" class="w-close"></a>
+  </div>
+</div> -->
+<div class="text-section-resize">
+    <div class="text-sec-top">
+        <div class="range-box">
+            <div class="ui segment" id="font-range">
+                <div class="ui range d-inline-block" id="range-1"></div>
+                <p class="d-inline-block">
+                    <span id="display-1"></span>
+                    pt
+                </p>
+            </div>
+            <div class="ui segment" id="transparency-range">
+                <div class="ui range d-inline-block" id="range-2"></div>
+                <p class="d-inline-block">
+                    <span id="display-2"></span>
+                    %
+                </p>
+            </div>
+        </div>
+        <div class="drag-empty" id="empty-w"></div>
+        <div class="window-set">
+            <a href="javascript:void(0);" class="w-close" onclick="hideCaptionWindow('hide', this);"></a>
+        </div>
+    </div>
+    <div class="text-sec-sec">
+        <div class="bg-white translation-r">
+            <div class="translation-h-f height-calc">
+                <div class="div_icon trans-prev_icon"></div>
+                <div class="trans-prev voice-text">
+                    <p class="trans-prev-text user-select">
+                        음성 인식된 언어가 번역되어 표기되는 부분입니다
+                        메인 화면에서 한국어와, 영어중 선택하세요. (이전)
+                    </p>
+                </div>
+                <div class="real-time voice-text">
+                    <p class="real-time-text user-select">
+                        음성 인식된 언어가 번역되어 표기되는 부분입니다
+                        메인 화면에서 한국어와, 영어중 선택하세요.(실시간)
+                    </p>
+                </div>
+            </div>
+            <div class="translation-h-f height-calc">
+                <div class="div_icon translator_icon"></div>
+                <div class="translator">
+                    <p class="translator-text user-select">
+                        위에 인식한 언어를 번역해 표기되는 부분입니다.
+                        번역서비스를 결제해 사용해주세요.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-sec-bottom">
+        <div class="icon-box">
+            <button class="playbtn" onclick="sendCaptionData(this);"></button>
+            <button class="pausebtn" onclick="sendCaptionData(this);"></button>
+            <button class="stopbtn" onclick="sendCaptionData(this);"></button>
+            <button class="recordbtn"></button>
+            <div class="recording"></div>
+        </div>
+        <div class="icon-box">
+            <button class="darkmode-btn"></button>
+            <button class="memobtn" onclick="fnShowPop('memo')"></button>
+            <button class="setbtn-mode" onclick="hideCaptionWindow('showMain', this);"></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let setTimeoutID;
+    $('html').click(function (e) {
+        $(".text-sec-sec").css({'height': "calc(100vh - 86px)"});
+        $('.text-sec-bottom, .text-sec-top').fadeIn();
+        clearTimeout(setTimeoutID)
+        setTimeoutID = setTimeout(function () {
+            $(".text-sec-sec").css({'height': "100vh"});
+            setFadeOut = $('.text-sec-bottom, .text-sec-top');
+            setFadeOut.fadeOut();
+        }, 5000)
+    });
+</script>
+
+
+<script src="../js/script.js"></script>
+<!--다크모드-->
+<script src="../js/dark.js"></script>
+<!--글자 크기 설정-->
+<script src="../js/range.js"></script>
+<script src="../js/semantic-ui-range/range.js"></script>
+<script src="../../function/caption/captionf.js"></script>
+<script src="../../function/recordAction.js"></script>
+</body>
+
+</html>

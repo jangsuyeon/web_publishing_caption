@@ -1,0 +1,22 @@
+<svg id="icon_light" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#eaebf3"/>
+      <stop offset="1" stop-color="#a0a6ad"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="사각형_2614" data-name="사각형 2614" width="16" height="16" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_4518" data-name="그룹 4518" clip-path="url(#clip-path)">
+    <path id="패스_9339" data-name="패스 9339" d="M8,12.283a.631.631,0,0,0-.63.63V15.37a.63.63,0,1,0,1.26,0V12.913a.631.631,0,0,0-.63-.63" fill="url(#linear-gradient)"/>
+    <path id="패스_9340" data-name="패스 9340" d="M11.746,10.856a.629.629,0,0,0-.447-.186h0a.629.629,0,0,0-.441,1.076l1.909,1.91a.63.63,0,1,0,.891-.891Z" fill="url(#linear-gradient)"/>
+    <path id="패스_9341" data-name="패스 9341" d="M8,4.913a3.087,3.087,0,0,0,0,6.174A3.091,3.091,0,0,0,11.087,8,3.055,3.055,0,0,0,8,4.913M9.827,8A1.827,1.827,0,1,1,8,6.174,1.829,1.829,0,0,1,9.827,8" fill="url(#linear-gradient)"/>
+    <path id="패스_9342" data-name="패스 9342" d="M15.37,7.37h-2.7a.631.631,0,0,0,0,1.261h2.7a.631.631,0,0,0,0-1.261" fill="url(#linear-gradient)"/>
+    <path id="패스_9343" data-name="패스 9343" d="M4.079,11.027,2.345,12.765a.63.63,0,0,0,.444,1.076.626.626,0,0,0,.446-.185L4.973,11.92a.632.632,0,0,0-.894-.893" fill="url(#linear-gradient)"/>
+    <path id="패스_9344" data-name="패스 9344" d="M8,3.963a.631.631,0,0,0,.63-.63V.63a.63.63,0,0,0-1.26,0v2.7a.631.631,0,0,0,.63.63" fill="url(#linear-gradient)"/>
+    <path id="패스_9345" data-name="패스 9345" d="M4.08,4.974a.631.631,0,0,0,.891-.895L3.235,2.343a.631.631,0,0,0-1.076.447.622.622,0,0,0,.185.444Z" fill="url(#linear-gradient)"/>
+    <path id="패스_9346" data-name="패스 9346" d="M3.717,8a.631.631,0,0,0-.63-.63H.631a.63.63,0,1,0,0,1.26H3.087A.631.631,0,0,0,3.717,8" fill="url(#linear-gradient)"/>
+    <path id="패스_9347" data-name="패스 9347" d="M11.3,5.329h0a.634.634,0,0,0,.448-.185l1.908-1.91a.625.625,0,0,0,0-.891.644.644,0,0,0-.89,0l-1.911,1.91A.631.631,0,0,0,11.3,5.329" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

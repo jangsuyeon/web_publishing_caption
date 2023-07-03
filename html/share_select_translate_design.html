@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/translate.css" rel="stylesheet" />
+    <link href="../css/dark.css" rel="stylesheet" />
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body data-theme="dark-mode">
+    <div class="select-translate-language">
+        <div class="confirm-top">
+            <div class="confirm-logo">TkitaCaption</div>
+            <button class="confirm-close" type="button"></button>
+        </div>
+        <div>
+            <div class="title-comment">
+                <p class="title">번역언어 선택</p>
+                <p class="comment">
+                    참가자들에게 제공할 번역 언어를 선택해주세요.<br />
+                    선택된 언어 수에 따라 번역 시간이 추가적으로 차감됩니다.<br />
+                    (번역 언어 수 * 이용 시간)
+                </p>
+            </div>
+            <div style="width: 336px; margin: 0 auto; position: relative;">
+                <form>
+                    <input class="list-input" placeholder="찾으시는 언어를 입력해주세요." style="width: 100%; background-color: #FFFFFF;" />
+                    <button class="reset" type="reset">초기화</button>
+                </form>
+            </div>
+            <div class="check-list-scroll">
+                <div class="check-list-item">
+                    <label class="container">
+                        <input type="checkbox" class="item-check" name="checkItem" />
+                        <span class="checkmark"></span>
+                        <sapn class="list-label">English (English)</sapn>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="confirm-bottom">
+            <div class="total-length">1개 언어 선택</div>
+            <div class="flex-d">
+                <label class="container round">
+                    <input type="checkbox" class="all-check" name="allCheckItem" />
+                    <span class="checkmark"></span>
+                    <sapn class="label-text">전체 언어를 선택합니다.</sapn>
+                </label>
+                <div>
+                    <button class="confirm-btn confirm-cancel" type="button">취소</button>
+                    <button class="confirm-btn complete" type="button">완료</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).on("input", ".list-input", function (e) {
+            if ($(".list-input").val() == "") {
+                $(".reset").hide();
+            } else {
+                $(".reset").show();
+            }
+        });
+
+        $(document).on("click", ".reset", function (e) {
+            $(".reset").hide();
+        });
+
+
+        $(document).on("click", "input[name=allCheckItem]", function (e) {
+            if ($("input[name=allCheckItem]").is(":checked")) {
+                $("input[name=checkItem]").prop("checked", true);
+            } else {
+                $("input[name=checkItem]").prop("checked", false);
+            }
+        });
+
+        $(document).on("click", "input[name=checkItem]", function (e) {
+            var total = $("input[name=checkItem]").length;
+            var checked = $("input[name=checkItem]:checked").length;
+
+            if (total != checked) {
+                $("input[name=allCheckItem]").prop("checked", false);
+            } else {
+                $("input[name=allCheckItem]").prop("checked", true);
+            }
+        });
+    </script>
+</body>
+
+</html>

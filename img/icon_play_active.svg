@@ -1,0 +1,14 @@
+<svg id="icon_재생12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.903" y1="1" x2="0" y2="-0.063" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#335fff"/>
+      <stop offset="1" stop-color="#2848ff"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="사각형_686" data-name="사각형 686" width="12" height="12" transform="translate(0 0.401)" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_3518" data-name="그룹 3518" transform="translate(0 -0.401)" clip-path="url(#clip-path)">
+    <path id="패스_8388" data-name="패스 8388" d="M11.7,6.069,4.4,1.327a.647.647,0,0,0-1,.543v9.484a.647.647,0,0,0,1,.543l7.3-4.742a.647.647,0,0,0,0-1.085" transform="translate(-1.403 0.178)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

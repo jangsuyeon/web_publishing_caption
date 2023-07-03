@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125" height="6" viewBox="0 0 125 6">
+  <defs>
+    <filter id="사각형_2630">
+      <feOffset dx="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur"/>
+      <feFlood flood-color="#575f6b" flood-opacity="0.2" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <filter id="사각형_2632">
+      <feOffset dx="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur-2"/>
+      <feFlood flood-color="#575f6b" flood-opacity="0.2" result="color-2"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color-2"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <filter id="사각형_2633" x="62" y="0" width="1" height="6" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur-3"/>
+      <feFlood flood-color="#586c8a" result="color-3"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-3"/>
+      <feComposite operator="in" in="color-3"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <filter id="사각형_2631">
+      <feOffset dx="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur-4"/>
+      <feFlood flood-color="#575f6b" flood-opacity="0.2" result="color-4"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-4"/>
+      <feComposite operator="in" in="color-4"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <filter id="사각형_2629">
+      <feOffset dx="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur-5"/>
+      <feFlood flood-color="#575f6b" flood-opacity="0.2" result="color-5"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-5"/>
+      <feComposite operator="in" in="color-5"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_17057" data-name="그룹 17057" transform="translate(-0.307 -17.184)">
+    <g data-type="innerShadowGroup">
+      <rect id="사각형_2630-2" data-name="사각형 2630" width="1" height="6" rx="0.5" transform="translate(124.307 17.184)" fill="#eaeef2"/>
+      <g transform="matrix(1, 0, 0, 1, 0.31, 17.18)" filter="url(#사각형_2630)">
+        <rect id="사각형_2630-3" data-name="사각형 2630" width="1" height="6" rx="0.5" transform="translate(124)" fill="#fff"/>
+      </g>
+    </g>
+    <g data-type="innerShadowGroup">
+      <rect id="사각형_2632-2" data-name="사각형 2632" width="1" height="3" rx="0.5" transform="translate(93.307 17.184)" fill="#eaeef2"/>
+      <g transform="matrix(1, 0, 0, 1, 0.31, 17.18)" filter="url(#사각형_2632)">
+        <rect id="사각형_2632-3" data-name="사각형 2632" width="1" height="3" rx="0.5" transform="translate(93)" fill="#fff"/>
+      </g>
+    </g>
+    <g data-type="innerShadowGroup">
+      <rect id="사각형_2633-2" data-name="사각형 2633" width="1" height="6" rx="0.5" transform="translate(62.307 17.184)" fill="#647899"/>
+      <g transform="matrix(1, 0, 0, 1, 0.31, 17.18)" filter="url(#사각형_2633)">
+        <rect id="사각형_2633-3" data-name="사각형 2633" width="1" height="6" rx="0.5" transform="translate(62)" fill="#fff"/>
+      </g>
+    </g>
+    <g data-type="innerShadowGroup">
+      <rect id="사각형_2631-2" data-name="사각형 2631" width="1" height="3" rx="0.5" transform="translate(31.307 17.184)" fill="#eaeef2"/>
+      <g transform="matrix(1, 0, 0, 1, 0.31, 17.18)" filter="url(#사각형_2631)">
+        <rect id="사각형_2631-3" data-name="사각형 2631" width="1" height="3" rx="0.5" transform="translate(31)" fill="#fff"/>
+      </g>
+    </g>
+    <g data-type="innerShadowGroup">
+      <rect id="사각형_2629-2" data-name="사각형 2629" width="1" height="6" rx="0.5" transform="translate(0.307 17.184)" fill="#eaeef2"/>
+      <g transform="matrix(1, 0, 0, 1, 0.31, 17.18)" filter="url(#사각형_2629)">
+        <rect id="사각형_2629-3" data-name="사각형 2629" width="1" height="6" rx="0.5" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,121 @@
+.select-translate-language {
+    padding: 20px 27px;
+}
+
+.title-comment .title {
+    text-align: center;
+}
+
+.title-comment .comment {
+    margin-left: 57px;
+}
+
+.check-list-scroll {
+    height: 310px;
+    overflow-y: auto;
+    background-color: #F1F1F6;
+    border-radius: 20px;
+    padding: 14px 21px;
+    margin-top: 15px;
+}
+
+.check-list-item {
+    width: 49%;
+    display: inline-block;
+    margin: 15px 0;
+}
+
+.check-list-item:nth-of-type(1),
+.check-list-item:nth-of-type(2) {
+    margin-top: 0;
+}
+
+.container {
+    padding-left: 35px;
+}
+
+.checkmark {
+    top: 0;
+    width: 26px;
+    height: 26px;
+}
+
+.round .checkmark {
+    border-radius: 50%;
+}
+
+.container .checkmark:after {
+    left: 7px;
+    top: 2px;
+    width: 8px;
+    height: 12px;
+    border-width: 0 4.5px 4.5px 0;
+}
+
+.list-label {
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.label-text {
+    font-size: 14px;
+    vertical-align: sub;
+}
+
+.confirm-bottom>.flex-d {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-length {
+    font-size: 12px;
+    margin-right: 13px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.reset {
+    display: none;
+    color: #335fff;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 55%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+[data-theme="dark-mode"] .list-input {
+    color: #333;
+}
+
+[data-theme="dark-mode"] .reset {
+    color: #335fff;
+}
+
+[data-theme="dark-mode"] .select-translate-language {
+    background-color: #23262B;
+}
+
+[data-theme="dark-mode"] .check-list-scroll {
+    background-color: #101113;
+}
+
+[data-theme="dark-mode"] .list-label {
+    color: #FFFFFF;
+}
+
+[data-theme="dark-mode"] .label-text {
+    color: #F0F1F5;
+}
+
+[data-theme="dark-mode"] .total-length {
+    color: #D4D7E3;
+}
+
+[data-theme="dark-mode"] .title-comment .title,
+[data-theme="dark-mode"] .title-comment .comment {
+    color: #F0F1F5;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/translate.css" rel="stylesheet" />
+    <link href="../css/dark.css" rel="stylesheet" />
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body data-theme="dark-mode">
+    <div class="sys-modal">
+        <div class="confirm-blur">
+            <div class="confirm-content modal-content">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                </div>
+                <div class="confirm-sec">
+                    <img src="../img/!_alert.svg" alt="느낌표" style="margin-bottom: 10px;" />
+                    <p class="text-comment">선택 가능한 언어 개수가 초과되었습니다.</p>
+                    <p class="text-comment">기존에 선택된 언어를 해제 후 추가해주세요.</p>
+                </div>
+                <div class="confirm-bottom">
+                    <button class="confirm-btn complete" type="button">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="select-translate-language">
+        <div class="confirm-top">
+            <div class="confirm-logo">TkitaCaption</div>
+            <button class="confirm-close" type="button"></button>
+        </div>
+        <div>
+            <div class="title-comment">
+                <p class="title">번역언어 선택</p>
+                <p class="comment">
+                    ·자동감지 언어를 선택해주세요. (최대 4개) <br />
+                    ·해당 목록에서 선택된 언어로 이야기를 하면, <br />
+                    언어를 자동으로 감지하여 문자로 변환합니다.
+                </p>
+            </div>
+            <div style="width: 336px; margin: 0 auto; position: relative;">
+                <form>
+                    <input class="list-input" placeholder="찾으시는 언어를 입력해주세요."
+                        style="width: 100%; background-color: #FFFFFF;" />
+                    <button class="reset" type="reset">초기화</button>
+                </form>
+            </div>
+            <div class="check-list-scroll">
+                <div class="check-list-item">
+                    <label class="container">
+                        <input type="checkbox" class="item-check" name="checkItem" />
+                        <span class="checkmark"></span>
+                        <sapn class="list-label">English (English)</sapn>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="confirm-bottom">
+            <div class="total-length">1개 언어 선택</div>
+
+            <div>
+                <button class="confirm-btn confirm-cancel" type="button">취소</button>
+                <button class="confirm-btn complete" type="button">완료</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).on("input", ".list-input", function (e) {
+            if ($(".list-input").val() == "") {
+                $(".reset").hide();
+            } else {
+                $(".reset").show();
+            }
+        });
+
+        $(document).on("click", ".reset", function (e) {
+            $(".reset").hide();
+        });
+
+    </script>
+</body>
+
+</html>

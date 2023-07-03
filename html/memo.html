@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TkitaCaption</title>
+    <link href="../css/common.css" rel="stylesheet"/>
+    <link href="../css/dark.css" rel="stylesheet"/>
+    <link href="../js/semantic-ui-range/range.css" rel="stylesheet"/>
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body data-theme="dark-mode">
+
+<div class="confirm-blur">
+    <div class="confirm-content" style="height: 400px; border-radius: 0;">
+        <div class="confirm-top" style="-webkit-app-region: drag;">
+            <div class="confirm-logo">TkitaCaption</div>
+            <button class="confirm-close modal-close" style="-webkit-app-region: no-drag;" type="button" onclick="hideMemoWindow();"></button>
+        </div>
+        <div class="confirm-sec">
+            <p class="confirm-comment">메모</p>
+            <textarea class="textarea-custom" id="saveMemoText" style="height: 130px" placeholder="[00:00:00] 입력된 메모" readonly></textarea>
+            <textarea class="textarea-custom" id="inputMemoText" style="height: 130px" placeholder="여기에 내용을 입력하세요&#13;&#10;Enter : 메모 저장&#13;&#10;Shift + Enter : 줄바꿈"></textarea>
+        </div>
+<!--        <div class="confirm-bottom">-->
+<!--            <button class="confirm-btn confirm-cancel modal-close" type="button">취소</button>-->
+<!--            <button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+<!--        </div>-->
+    </div>
+</div>
+
+<script src="../../function/memo/memo.js"></script>
+</body>
+
+</html>

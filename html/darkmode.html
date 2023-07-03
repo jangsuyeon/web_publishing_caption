@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TkitaCaption</title>
+  <link href="css/common.css" rel="stylesheet" />
+  <link href="css/dark.css" rel="stylesheet" />
+  <script src="js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body data-theme="dark">
+
+
+  <div class="text-section">
+    <div class="text-sec-top">
+      <div>
+        <div class="slidecontainer">
+          <input type="range" min="16" max="40" value="40" class="slider" id="myRange">
+          <p><span id="demo"></span>pt</p>
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="100" class="slider-d" id="myRange-d">
+          <p><span id="demo-d"></span>%</p>
+        </div>
+      </div>
+      <div class="drag-empty" id="empty-w"></div>
+      <div class="window-set">
+        <a href="" class="w-one"></a>
+        <a href="" class="w-lower"></a>
+        <a href="" class="w-resize"></a>
+        <a href="" class="w-close"></a>
+      </div>
+    </div>
+    <div class="text-sec-sec">
+      <div class="bg-white translation">
+        <div class="trans-prev">
+          <div class="div_icon trans-prev_icon"></div>
+          <p>
+            음성 인식된 언어가 번역되어 표기되는 부분입니다
+            메인 화면에서 한국어와, 영어중 선택하세요. (이전)
+          </p>
+        </div>
+        <div class="real-time">
+          <p>
+            음성 인식된 언어가 번역되어 표기되는 부분입니다
+            메인 화면에서 한국어와, 영어중 선택하세요.(실시간)
+          </p>
+        </div>
+        <div class="translator">
+          <div class="div_icon translator_icon"></div>
+          <p>
+            위에 인식한 언어를 번역해 표기되는 부분입니다.
+            번역서비스를 결제해 사용해주세요.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white history">
+        <div class="div_icon history_icon"></div>
+        <p>
+          여기는 사운드를 텍스트로 변환한 이전 기록이 보여지는 공간입니다. 스크롤이 되는 공간입니다.
+          The Lorem ipsum text is derived from sections 1.10.32 and 1.10.33 of Cicero's 'De finibus bonorum et
+          malorum'.[7][8] The physical source may have been the 1914 Loeb Classical Library edition of De finibus, where
+          the Latin text, presented on the left-hand (even) pages, breaks off on page 34 with "Neque porro quisquam est
+          qui do-" and continues on page 36 with "lorem ipsum ...", suggesting that the galley type of that page was
+          mixed up to make the dummy text seen today.[1]
+          The discovery of the text's origin is attributed to Richard McClintock, a Latin scholar at Hampden–Sydney
+          College. McClintock connected Lorem ipsum to Cicero's writing sometime before 1982 while searching for
+          instances of the Latin word consectetur, which was rarely used in classical literature.[2] McClintock first
+          published his discovery in a 1994 letter to the editor of Before & After magazine, contesting the editor's
+          earlier claim that Lorem ipsum held no meaning.
+        </p>
+      </div>
+    </div>
+    <div class="text-sec-bottom">
+      <div class="icon-box">
+        <button class="playbtn"></button>
+        <button class="pausebtn"></button>
+        <button class="stopbtn"></button>
+        <button class="recordbtn"></button>
+        <div class="recording"></div>
+      </div>
+      <div class="icon-box">
+        <button class="darkmode-btn"></button>
+        <button class="memobtn"></button>
+        <button class="setbtn"></button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="script/script.js"></script>
+  <script src="script/dark.js"></script>
+</body>
+
+</html>

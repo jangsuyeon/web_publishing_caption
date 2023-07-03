@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TkitaCaption</title>
+		<link href="../css/common.css" rel="stylesheet" />
+		<link href="../css/dark.css" rel="stylesheet" />
+		<link href="../css/gauge.css" rel="stylesheet" />
+		<link href="../css/swiper.css" rel="stylesheet" />
+		<link href="../css/changeMode.css" rel="stylesheet" />
+		<link href="../js/semantic-ui-range/range.css" rel="stylesheet" />
+		<script src="../js/jquery/3.6.0/jquery.min.js"></script>
+		<script src="../js/socketIo/socket.io.min.js"></script>
+		<script src="../js/p5js/p5.min.js"></script>
+		<script src="../js/p5js/p5.sound.js"></script>
+		<script src="../js/sketch.js"></script>
+	</head>
+
+	<body data-theme="dark-mode">
+		<!-- swipe guide -->
+		<!-- <div class="sys-modal" id="startGuide" style="display:block; opacity: 1; z-index: 20;">
+        <div class="confirm-blur" style="position: fixed; z-index: 10; top: 0; left: 0; width: 100%; height: 100%;">
+            <div class="confirm-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <div class="confirm-top">
+                </div>
+                <div class="confirm-sec">
+                    <div class="swiper guide">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">1</div>
+                            <div class="swiper-slide">2</div>
+                            <div class="swiper-slide">3</div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="confirm-bottom" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label class="container">
+                        <input type="checkbox"/>
+                        <span class="checkmark"></span>
+                        <span>다시보지 않기</span>
+                    </label>
+                    <button type="button" class="guide-close">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+		<div class="sys-modal" id="loadingServer">
+			<div
+				class="confirm-blur"
+				style="
+					position: fixed;
+					z-index: 10;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				"
+			>
+				<div
+					class="confirm-content"
+					style="
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					"
+				>
+					<div class="confirm-top">
+						<div class="confirm-logo">TkitaCaption</div>
+					</div>
+					<div class="confirm-sec">
+						<div class="loading-container">
+							<div class="loading"></div>
+							<div id="loading-text">loading...</div>
+						</div>
+					</div>
+					<div class="confirm-bottom">
+						<button
+							class="confirm-btn confirm-cancel"
+							id="loadingServer-close-btn"
+							type="button"
+							onclick="cancelConnection()"
+						>
+							취소
+						</button>
+						<!--<button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sys-modal" id="system-alert">
+			<div
+				class="confirm-blur"
+				style="
+					position: fixed;
+					z-index: 10;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				"
+			>
+				<div
+					class="confirm-content"
+					style="
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					"
+				>
+					<div class="confirm-top">
+						<div class="confirm-logo">TkitaCaption</div>
+					</div>
+					<div class="confirm-sec">
+						<div class="loading-container">
+							<div class="loading"></div>
+							<div id="system-alert-text"></div>
+						</div>
+					</div>
+					<div class="confirm-bottom">
+						<button
+							class="confirm-btn confirm-cancel"
+							id="system-alert-close-btn"
+							type="button"
+							onclick="systemAlertOff()"
+						>
+							닫기
+						</button>
+						<!--<button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sys-modal" id="update-alert">
+			<div
+				class="confirm-blur"
+				style="
+					position: fixed;
+					z-index: 10;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				"
+			>
+				<div
+					class="confirm-content"
+					style="
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					"
+				>
+					<div class="confirm-top">
+						<div class="confirm-logo">TkitaCaption</div>
+					</div>
+					<div class="confirm-sec">
+						<div class="loading-container">
+							<div class="loading"></div>
+							<div id="update-alert-text">사용가능한 업데이트가 있습니다.</div>
+						</div>
+					</div>
+					<div class="confirm-bottom">
+						<button
+							class="confirm-btn confirm-confirm"
+							id="update-alert-confirm-btn"
+							type="button"
+							onclick="updateApp();"
+						>
+							업데이트
+						</button>
+						<button
+							class="confirm-btn confirm-cancel"
+							id="update-alert-close-btn"
+							type="button"
+							onclick="updateAlertOff();"
+						>
+							닫기
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sys-modal" id="system-file-download-confirm">
+			<div
+				class="confirm-blur"
+				style="
+					position: fixed;
+					z-index: 10;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				"
+			>
+				<div
+					class="confirm-content"
+					style="
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					"
+				>
+					<div class="confirm-top">
+						<div class="confirm-logo">TkitaCaption</div>
+					</div>
+					<div class="confirm-sec">
+						<div class="loading-container">
+							<div class="loading"></div>
+							<div id="system-file-download-confirm-text"></div>
+						</div>
+					</div>
+					<div class="confirm-bottom">
+						<button
+							class="confirm-btn confirm-cancel"
+							id="system-file-download-confirm-ok-btn"
+							type="button"
+							onclick="fileDownloadActivate()"
+						>
+							확인
+						</button>
+						<button
+							class="confirm-btn confirm-cancel"
+							id="system-file-download-confirm-no-btn"
+							type="button"
+							onclick="systemFileDownloadOff()"
+						>
+							취소
+						</button>
+						<!--<button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sys-modal" id="share-disconnect-confirm">
+			<div
+				class="confirm-blur"
+				style="
+					position: fixed;
+					z-index: 10;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				"
+			>
+				<div
+					class="confirm-content"
+					style="
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					"
+				>
+					<div class="confirm-top">
+						<div class="confirm-logo">TkitaCaption</div>
+					</div>
+					<div class="confirm-sec">
+						<div class="loading-container">
+							<div class="loading"></div>
+							<div id="share-disconnect-confirm-text">
+								현재 진행 중인 자막 공유를 함께 종료 하시겠습니까?
+							</div>
+						</div>
+					</div>
+					<div class="confirm-bottom">
+						<button
+							class="confirm-btn confirm-cancel"
+							id="share-disconnect-confirm-ok-btn"
+							type="button"
+							onclick="socketTerminate();"
+						>
+							확인
+						</button>
+						<button
+							class="confirm-btn confirm-cancel"
+							id="share-disconnect-confirm-no-btn"
+							type="button"
+							onclick="shareDisconnectAlertOnOff(false);"
+						>
+							취소
+						</button>
+						<!--<button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="window-setting changeMode-window">
+				<div class="top-logo">
+					<p>Tkita Caption</p>
+				</div>
+				<div class="window-act">
+					<a href="javascript:void(0);" class="w-lower"></a>
+					<a href="javascript:void(0);" class="w-resize"></a>
+					<a href="javascript:void(0);" class="w-close"></a>
+				</div>
+			</div>
+
+			<div class="text-section">
+				<div class="text-sec-top changeMode-top">
+					<div class="range-box">
+						<div class="ui segment font-size-bar" id="font-range">
+							<div class="ui range d-inline-block" id="range-1"></div>
+							<p class="d-inline-block">
+								<span id="display-1"></span>
+								pt
+							</p>
+						</div>
+						<div
+							class="ui segment opacity-bar"
+							id="transparency-range"
+							style="display: none"
+						>
+							<div class="ui range d-inline-block" id="range-2"></div>
+							<p class="d-inline-block">
+								<span id="display-2"></span>
+								%
+							</p>
+						</div>
+					</div>
+					<!-- <div class="drag-empty" id="empty-w"></div> -->
+					<div class="window-set">
+						<button
+							id="bigChange"
+							class="w-one return-butt large-window"
+							onclick="changeMode(this);"
+							data="큰창전환"
+						></button>
+						<button
+							id="smallChange"
+							class="w-one resize-butt small-window"
+							onclick="changeMode(this);"
+							data="작은창전환"
+						></button>
+						<!-- <button class="w-close resize-butt return-butt"></button> -->
+						<!-- <a href="livecaption_resize.html" class="w-one resize-butt" target="_blank"></a> -->
+					</div>
+				</div>
+				<div class="text-sec-sec">
+					<div id="resizePanel">
+						<!--<div id="div_left" class="handler_horizontal"></div>-->
+						<div class="bg-white history setTransparent">
+							<div class="flex flex-center">
+								<div class="div_icon history_icon">기록</div>
+								<!--<a href="history_resize.html" class="div_icon icon_blank" target="_blank"></a>-->
+								<a
+									href="javascript:void(0);"
+									class="div_icon icon_blank w-one"
+									onclick="showHistoryWindow()"
+									data="히스토리"
+								></a>
+							</div>
+							<div class="history-scroll">
+								<p class="history-text user-select user-select-none">
+									여기는 사운드를 텍스트로 변환한 이전 기록이 보여지는
+									공간입니다.
+								</p>
+							</div>
+						</div>
+						<div class="bg-white translation setTransparent">
+							<div class="height-calc real-time-sec">
+								<div class="flex flex-center">
+									<div class="div_icon trans-prev_icon">실시간</div>
+								</div>
+								<div
+									class="real-time-single voice-text real-time-text user-select user-select-none"
+									style="height: 80%; overflow: hidden"
+								>
+									인식된 음성이 실시간으로 표기되는 부분입니다 메인 화면에서
+									한국어와, 영어중 선택하세요.
+								</div>
+							</div>
+
+							<div class="height-calc translate-sec">
+								<div class="flex flex-center">
+									<div class="div_icon translator_icon">번역</div>
+								</div>
+								<div class="translator voice-text chat user-select user-select-none">
+									<div class="trans-recent">
+										인식된 언어를 번역해 표기되는 부분입니다.
+									</div>
+									<div class="trans-before" style="display: none">
+									</div>
+								</div>
+							</div>
+
+							<div class="height-calc trans-prev-sec" style="display: none">
+								<div class="trans-prev voice-text">
+									<p class="trans-prev-text user-select user-select-none">
+										인식된 음성이 모두 완료되어 표기되는 부분입니다 메인
+										화면에서 한국어와, 영어중 선택하세요.
+									</p>
+								</div>
+							</div>
+							<!-- 수정 -->
+							<!-- <div class="height-calc real-time-sec">
+                    <div class="div_icon trans-prev_icon"></div>
+                    <div class="real-time">
+                        <p class="real-time-text user-select">
+                            음성 인식된 언어가 번역되어 표기되는 부분입니다
+                            메인 화면에서 한국어와, 영어중 선택하세요.(실시간)
+                        </p>
+                    </div>
+                </div> -->
+							<!--                                <div class="height-calc voice-text real-time-sec">-->
+							<!--                    <div class="real-time user-select">-->
+							<!--                        <p class="real-time-text">-->
+							<!--                            음성 인식된 언어가 번역되어 표기되는 부분입니다-->
+							<!--                            메인 화면에서 한국어와, 영어중 선택하세요.(실시간)-->
+							<!--                        </p>-->
+							<!--                    </div>-->
+							<!--                </div>-->
+						</div>
+					</div>
+				</div>
+				<div class="text-sec-bottom changeMode-bottom">
+					<div class="icon-box">
+						<button class="playbtn w-one" data="재생" onclick="$(this).toggleClass('pausebtn');"></button>
+						<!-- <button class="pausebtn w-one" data="일시정지"></button> -->
+						<button class="stopbtn w-one" data="정지"></button>
+						<button class="recordbtn"></button>
+						<div
+							id="micCanvas"
+							onmouseup="textChange()"
+							onmouseover="textChange()"
+							onmouseenter="textChange()"
+							onmousemove="textChange()"
+							class="recording"
+						></div>
+						<div
+							class="recording-time"
+							onmouseleave="soundChange()"
+							onmouseout="soundChange()"
+							style="display: none"
+						>
+							<p>00:00:00</p>
+						</div>
+						<p class="sharing-status">공유 중</p>
+					</div>
+					<div class="icon-box">
+						<button class="darkmode-btn w-one" data="모드전환"></button>
+						<button
+							class="memobtn w-one"
+							data="메모"
+							onclick="showMemoWindow()"
+						></button>
+						<button class="setbtn active w-one" data="설정"></button>
+					</div>
+				</div>
+				<!-- <div class="modal" id="memo">
+        <div class="confirm-content modal-content">
+            <div class="confirm-top">
+                <div class="confirm-logo"></div>
+                <button class="confirm-close" type="button" onclick="fnHidePop('memo')"></button>
+            </div>
+            <div class="confirm-sec">
+                <p class="confirm-comment">메모</p>
+                <textarea class="textarea-custom" placeholder="[0:00:00] 입력된 메모"></textarea>
+                <textarea class="textarea-custom"
+                          placeholder="여기에 내용을 입력하세요 Enter : 메모 저장 Shift + Enter : 줄바꿈"></textarea>
+            </div>
+            <div class="confirm-bottom">
+                <button class="confirm-btn confirm-cancel" type="button" onclick="fnHidePop('memo')">취소</button>
+                <button class="confirm-btn confirm-confirm" type="button">확인</button>
+            </div>
+        </div>
+    </div> -->
+			</div>
+
+			<div class="tab-section">
+				<div class="tab_menu">
+					<div class="tab-flex">
+						<div class="section-logo"></div>
+						<ul class="list">
+							<li class="is_on">
+								<a
+									href="#tab1"
+									id="setting"
+									class="btn settingbtn w-one"
+									data="설정"
+								></a>
+							</li>
+							<li>
+								<a
+									href="#tab5"
+									id="share"
+									class="btn sharebtn w-one"
+									data="공유"
+								></a>
+							</li>
+							<li>
+								<a
+									href="#tab2"
+									id="mypage"
+									class="btn mypagebtn w-one"
+									data="마이페이지"
+								></a>
+							</li>
+							<li>
+								<a
+									href="#tab3"
+									id="list"
+									class="btn recordingbtn w-one"
+									data="목록"
+								></a>
+							</li>
+							<li>
+								<a
+									href="#tab4"
+									id="word"
+									class="btn wordbtn w-one"
+									data="자주쓰는단어"
+								></a>
+							</li>
+						</ul>
+					</div>
+					<div class="cont_area">
+						<div id="tab1" class="cont" style="display: block">
+							<div class="setting-info border-14 padding-set">
+								<p class="setting-warning">
+									<span class="tooltip"
+										>설정
+										<img src="../img/!.svg" alt="설정" />
+										<span class="tooltiptext tooltip-bottom-tab"
+											>캡션 이용에 필요한 모든 설정을 할 수 있습니다.</span
+										>
+									</span>
+								</p>
+								<!--                    <div class="setting-hover">-->
+								<!--                        <p>캡션 이용에 필요한 모든 설정을 할 수 있습니다.</p>-->
+								<!--                    </div>-->
+							</div>
+							<div class="setting-select border-14 padding-set">
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting1">
+										<div class="inner-container">
+											<div class="tooltip">
+												입력장치 설정
+												<span class="tooltiptext tooltip-bottom"
+													>선택된 장치를 통해 입력되는 소리가 자막으로
+													변환됩니다.</span
+												>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box select-box-empty">
+										<div class="select-box" id="audio-select">
+											<div id="mic_select_display" class="select-choice">
+												<span class="select-arrow"></span>
+												<p class="ellipsis">
+													스테레오 믹스(Realtek high Definition)
+												</p>
+											</div>
+											<div class="select-list align-left">
+												<ul id="mic_select_list"></ul>
+											</div>
+										</div>
+										<!-- <div class="slidecontainer-s">
+                                <input type="range" min="16" max="40" value="50" class="slider-s" id="myRange">
+                            </div> -->
+									</div>
+								</div>
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting2">
+										<div class="inner-container">
+											<div class="tooltip">
+												인식언어 자동감지
+												<span class="tooltiptext tooltip-bottom">
+													<!-- 현재 입력되는 오디오의 언어를 선택합니다. 한국어를
+													듣고 있다면, 한국어를 선택 해 주세요. -->
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box">
+										<div class="swichbox right" id="engine_language">
+											<a class="swichbtn font-color">OFF</a>
+											<a class="swichbtn">ON</a>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="setting-box">
+                        <div class="container-tool inline-box" id="setting3">
+                            <div class="inner-container">
+                                <div class="tooltip">성능품질
+                                    <span class="tooltiptext tooltip-bottom">자막의 우선순위를 설정합니다. "성능"을 선택하면 자막 변환 속도가 향상되나 변환정확도가 감소하며, "품질"을 선택하면 변환정확도는 향상되나 변환 속도가 감소됩니다.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inline-box">
+                            <div class="swichbox right" id="performance">
+                                <a class="swichbtn font-color">성능</a>
+                                <a class="swichbtn">품질</a>
+                            </div>
+                        </div>
+                    </div> -->
+								<!--                    <div class="setting-box">-->
+								<!--                        <div class="container-tool inline-box" id="setting4">-->
+								<!--                            <div class="inner-container">-->
+								<!--                                <div class="tooltip">시스템 언어-->
+								<!--                                    <span class="tooltiptext tooltip-bottom">프로그램에서 표시되는 언어를 선택합니다.</span>-->
+								<!--                                </div>-->
+								<!--                            </div>-->
+								<!--                        </div>-->
+								<!--                        <div class="inline-box select-box-empty">-->
+								<!--                            <div class="select-box" id="system-select">-->
+								<!--                                <div class="select-choice">-->
+								<!--                                    <span class="select-arrow"></span>-->
+								<!--                                    <p id="system_language_text">한국어</p>-->
+								<!--                                </div>-->
+								<!--                                <div class="select-list">-->
+								<!--                                    <ul>-->
+								<!--                                        <li>-->
+								<!--                                            <a href="javascript:void(0);" id="system_language_ko" data-lang="ko">한국어</a>-->
+								<!--                                        </li>-->
+								<!--                                        <li>-->
+								<!--                                            <a href="javascript:void(0);" id="system_language_en" data-lang="en">영어</a>-->
+								<!--                                        </li>-->
+								<!--                                    </ul>-->
+								<!--                                </div>-->
+								<!--                            </div>-->
+								<!--                        </div>-->
+								<!--                    </div>-->
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting5">
+										<div class="inner-container">
+											<div class="tooltip">
+												음성인식 언어
+												<span class="tooltiptext tooltip-bottom">
+													<!-- 각 메뉴마다 표시되는 설명 내용을 보거나 숨길 수
+													있습니다. -->
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box">
+										<button class="all-selectbtn-share" type="button">한국어</button>
+									</div>
+								</div>
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting6">
+										<div class="inner-container">
+											<div class="tooltip">
+												자동감지 언어
+												<span class="tooltiptext tooltip-top">
+													<!-- "오프라인" 선택 시 인터넷이 연결되지 않아도 자막 기능
+													이용이 가능하나, 이용 중인 PC 사양이 자막 속도 및
+													품질에 영향을 주게 됩니다. "온라인"을 선택하면 이용
+													중인 PC 사양이 미치는 영향도가 감소하나, 인터넷이
+													연결되어 있어야 합니다. -->
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box">
+										<button class="all-selectbtn-share" type="button">언어선택(4개)</button>
+									</div>
+								</div>
+								<div
+									class="setting-box file-download-box"
+									style="display: none"
+								>
+									<div class="container-tool inline-box" id="setting6">
+										<div class="inner-container">
+											<div class="tooltip">다운로드</div>
+										</div>
+									</div>
+									<div class="inline-box">
+										<div class="count-gauge">
+											<div class="gauge" per="100"></div>
+											<p class="download-count"></p>
+										</div>
+										<div class="loading-c">
+											<span class="download-loading">Loading...</span>
+											<span class="download-com">
+												엔진 파일 적용 완료
+												<img src="../img/login-check.svg" alt="완료" />
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="setting-select padding-set">
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting6">
+										<div class="inner-container">
+											<div class="tooltip">
+												자동 번역
+												<span class="tooltiptext tooltip-top">
+													<!-- "오프라인" 선택 시 인터넷이 연결되지 않아도 자막 기능
+													이용이 가능하나, 이용 중인 PC 사양이 자막 속도 및
+													품질에 영향을 주게 됩니다. "온라인"을 선택하면 이용
+													중인 PC 사양이 미치는 영향도가 감소하나, 인터넷이
+													연결되어 있어야 합니다. -->
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box">
+										<button class="all-selectbtn-share" type="button">중국어</button>
+									</div>
+								</div>
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting2">
+										<div class="inner-container">
+											<div class="tooltip">
+												원문보기
+												<span class="tooltiptext tooltip-bottom">
+													<!-- 현재 입력되는 오디오의 언어를 선택합니다. 한국어를
+													듣고 있다면, 한국어를 선택 해 주세요. -->
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box">
+										<div class="swichbox right" id="engine_language">
+											<a class="swichbtn font-color">OFF</a>
+											<a class="swichbtn">ON</a>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="setting-box select-translate-box">
+									<div class="container-tool inline-box" id="setting7">
+										<div class="inner-container">
+											<div class="tooltip">
+												번역언어<span class="payimg"></span>
+												<span class="tooltiptext tooltip-top"
+													>자막이 선택된 언어로 자동 번역되어 표시됩니다.</span
+												>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box select-box-empty">
+										<div class="select-box" id="lang-select">
+											<div class="select-choice">
+												<span class="select-arrow"></span>
+												<p id="translate-language">한국어</p>
+											</div>
+											<div class="select-list select-list-up">
+												<ul>
+													<li id="translate-id-none">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>없음</a
+														>
+													</li>
+													<li id="translate-id-ko">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>한국어</a
+														>
+													</li>
+													<li id="translate-id-en">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>영어</a
+														>
+													</li>
+													<li id="translate-id-zh-CN">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>중국어</a
+														>
+													</li>
+													<li id="translate-id-ja">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>일본어</a
+														>
+													</li>
+													<li id="translate-id-th">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>태국어</a
+														>
+													</li>
+													<li id="translate-id-mn">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>몽골어</a
+														>
+													</li>
+													<li id="translate-id-ru">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>러시아어</a
+														>
+													</li>
+													<li id="translate-id-es">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>스페인어</a
+														>
+													</li>
+													<li id="translate-id-vi">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>베트남어</a
+														>
+													</li>
+													<li id="translate-id-tl">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>필리핀어</a
+														>
+													</li>
+													<li id="translate-id-ms">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>말레이어</a
+														>
+													</li>
+													<li id="translate-id-uz">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>우즈베크어</a
+														>
+													</li>
+													<li id="translate-id-id">
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateLanguage(this);"
+															>인도네시아어</a
+														>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting8">
+										<div class="inner-container">
+											<div class="tooltip">
+												번역 보기 설정<span class="payimg"></span>
+												<span class="tooltiptext tooltip-top"
+													>번역 표시 방법을 설정할 수 있습니다. (원문과 함께
+													보기, 번역결과만 보기)</span
+												>
+											</div>
+										</div>
+									</div>
+									<div class="inline-box select-box-empty">
+										<div class="select-box" id="trans-select">
+											<div class="select-choice">
+												<span class="select-arrow"></span>
+												<p id="translate-type">원문 + 번역문</p>
+											</div>
+											<div class="select-list select-list-up">
+												<ul>
+													<li>
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateType(this);"
+															>원문 + 번역문</a
+														>
+													</li>
+													<li>
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateType(this);"
+															>번역문</a
+														>
+													</li>
+													<li>
+														<a
+															href="javascript:void(0);"
+															onclick="setTranslateType(this);"
+															>꺼짐</a
+														>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div> -->
+							</div>
+							<div style="text-align: center;">
+								<button class="share-translation-btn" type="button">자막 공유</button>
+							</div>
+						</div>
+						<div id="tab5" class="cont">
+							<div id="tab5-top" class="border-14">
+								<div class="mypage-info mb-24">
+									<p class="setting-warning">
+										<span class="tooltip">
+											공유
+											<img src="../img/!.svg" alt="설정" />
+											<span class="tooltiptext tooltip-bottom-tab">
+												공유를 하여 현재 자막을 여러 사람과 함께 볼 수 있습니다.
+											</span>
+										</span>
+									</p>
+									<button
+										class="share-url w-one"
+										onclick=""
+										data="URL공유"
+										data-clipboard-text="None"
+									></button>
+									<button
+										class="share-qr w-one"
+										onclick="createQRCode();"
+										data="QR공유"
+									></button>
+								</div>
+								<div class="share-start-box">
+									<button class="share-start" onclick="checkSocket(this);">공유시작</button>
+									<button class="share-reservation" onclick="shareReservation();">공유예약</button>
+								</div>
+							</div>
+							<div id="tab5-sec" class="setting-select padding-set">
+								<div class="setting-box">
+									<div class="container-tool inline-box" id="setting7">
+										<div class="inner-container">
+											<div class="tooltip">
+												사용가능번역언어선택
+												<span class="tooltiptext tooltip-top">
+													공유를 하는 사람들이 볼 수 있는 번역 언어를 설정 합니다.
+												</span>
+											</div>
+										</div>
+									</div>
+
+									<button class="list-btn all-selectbtn-share" id="share-select-translate" onclick="shareSelectTranslate();">
+										0개 언어선택됨
+									</button>
+								</div>
+<!--								<div class="setting-box">-->
+<!--									<div class="container-tool inline-box" id="setting7">-->
+<!--										<div class="inner-container">-->
+<!--											<div class="tooltip">-->
+<!--												공유여부-->
+<!--												<span class="tooltiptext tooltip-top"-->
+<!--													>미팅내용 적기</span-->
+<!--												>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<div class="inline-box">-->
+<!--										<div class="swichbox right" id="socketRoom">-->
+<!--											<a class="swichbtn font-color">OFF</a>-->
+<!--											<a class="swichbtn">ON</a>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+	<!--							<div class="setting-box">-->
+	<!--								<div class="container-tool inline-box" id="setting8">-->
+	<!--									<div class="inner-container">-->
+	<!--										<div class="tooltip">-->
+	<!--											내용전달-->
+	<!--											<span class="tooltiptext tooltip-top"-->
+	<!--												>내용전달 적기</span-->
+	<!--											>-->
+	<!--										</div>-->
+	<!--									</div>-->
+	<!--								</div>-->
+	<!--								<div class="inline-box">-->
+	<!--									<div class="swichbox right" id="socketSend">-->
+	<!--										<a class="swichbtn font-color">OFF</a>-->
+	<!--										<a class="swichbtn">ON</a>-->
+	<!--									</div>-->
+	<!--								</div>-->
+	<!--							</div>-->
+							</div>
+<!--							<div id="tab5-sec" class="border-14">-->
+
+<!--								<div class="setting-select border-14 padding-set">-->
+<!--									<div class="subscribe-scroll">-->
+<!--										<div class="subscribe-info flex flex-center align-items-end translation-info">-->
+<!--											<div>-->
+<!--												<p class="remaining-name">사용가능번역언어선택</p>-->
+<!--											</div>-->
+<!--											<button class="list-btn all-selectbtn" id="share-select-translate" onclick="shareSelectTranslate();">-->
+<!--												번역선택-->
+<!--											</button>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+							<div class="confirm-blur confirm-blur-380 modal" id="sharePasteURLComplete">
+								<div class="confirm-content modal-content">
+									<div class="confirm-top">
+										<div class="confirm-logo">TkitaCaption</div>
+										<button
+											class="confirm-close"
+											type="button"
+											onclick="fnHidePop('sharePasteURLComplete')"
+										></button>
+									</div>
+									<div class="confirm-sec">
+										<p class="confirm-comment sharePasteURLComplete-comment">
+										</p>
+									</div>
+									<div class="confirm-bottom">
+										<button
+											class="confirm-btn confirm-cancel"
+											type="button"
+											onclick="fnHidePop('sharePasteURLComplete')">
+											확인
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="confirm-blur confirm-blur-380 modal" id="shareStart">
+								<div class="confirm-content modal-content">
+									<div class="confirm-top">
+										<div class="confirm-logo">TkitaCaption</div>
+										<button
+											class="confirm-close"
+											type="button"
+											onclick="fnHidePop('shareStart')"
+										></button>
+									</div>
+									<div class="confirm-sec">
+										<p class="confirm-comment shareStart-comment">
+											자막 공유 기능을 종료 하시겠습니까?
+										</p>
+									</div>
+									<div class="confirm-bottom">
+										<button
+											class="confirm-btn confirm-cancel"
+											type="button"
+											onclick="socketTerminate();">
+											확인
+										</button>
+										<button
+											class="confirm-btn confirm-cancel"
+											type="button"
+											onclick="cancelShareEnd();">
+											취소
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="confirm-blur confirm-blur-380 modal" id="shareCheck">
+								<div class="confirm-content modal-content">
+									<div class="confirm-top">
+										<div class="confirm-logo">TkitaCaption</div>
+										<button
+											class="confirm-close"
+											type="button"
+											onclick="fnHidePop('shareCheck')"
+										></button>
+									</div>
+									<div class="confirm-sec">
+										<p class="confirm-comment shareStart-comment">
+											선택된 번역언어가 없습니다. 그래도 계속하시겠습니까?
+										</p>
+									</div>
+									<div class="confirm-bottom">
+										<button
+											class="confirm-btn confirm-cancel"
+											type="button"
+											onclick="checkSocket('shareStart');">
+											확인
+										</button>
+										<button
+											class="confirm-btn confirm-cancel"
+											type="button"
+											onclick="fnHidePop('shareCheck');">
+											취소
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab2" class="cont">
+							<div id="tab2-top" class="border-14">
+								<div class="mypage-info mb-24">
+									<button
+										class="logout w-one"
+										onclick="fnShowPop('logout')"
+										data="로그아웃"
+									></button>
+									<p class="setting-warning">
+										<span class="tooltip"
+											>마이페이지
+											<img src="../img/!.svg" alt="설정" />
+											<span class="tooltiptext tooltip-bottom-tab"
+												>계정 정보 및 멤버십, 번역서비스 잔여 시간 등의 구독
+												정보를 확인하실 수 있습니다.</span
+											>
+										</span>
+									</p>
+									<button
+										class="admin-setting w-one"
+										onclick="fnShowPop('admin');"
+										data="어드민설정"
+										style="display: none"
+									></button>
+									<!--                        <div class="setting-hover">-->
+									<!--                            <p>계정 정보 및 멤버십, 번역서비스 잔여 시간 등의 구독 정보를 확인하실 수 있습니다.</p>-->
+									<!--                        </div>-->
+								</div>
+								<div class="flex flex-left">
+									<div>
+										<!--                            <label>-->
+										<!--                                <div class="user-profile"></div>-->
+										<!--                            </label>-->
+										<label for="profile-change">
+											<div class="user-profile"></div>
+										</label>
+										<input
+											type="file"
+											id="profile-change"
+											accept="image/jpeg, image/png"
+											style="display: none"
+										/>
+									</div>
+									<div>
+										<p class="user-info">회원정보</p>
+										<p class="user-id"><b>에어사운드</b>님, 안녕하세요</p>
+										<p class="user-email">airsound@gmail.com</p>
+									</div>
+								</div>
+							</div>
+							<div id="tab2-sec" class="border-14">
+								<!-- <div class="license"> -->
+								<!--                        <button class="license-insertbtn">라이센스 등록</button>-->
+								<!--                        <p class="subscribe-title">라이센스</p>-->
+								<!--                        <div class="subscribe-info">-->
+								<!--                            <div class="flex flex-center align-items-end">-->
+								<!--                                <div>-->
+								<!--                                    <p class="remaining-name">등록가능 PC</p>-->
+								<!--                                    <p class="remaining-date m-4">남은횟수</p>-->
+								<!--                                </div>-->
+								<!--                                <div class="m-width-20 text-align-end">-->
+								<!--                                    <p class="remaining-b">1</p>-->
+								<!--                                </div>-->
+								<!--                            </div>-->
+								<!--                            <div class="pc-name-del">-->
+								<!--                                <div class="pc-name">-->
+								<!--                                    <span class="pc-name-txt">PC 이름</span>-->
+								<!--                                    &lt;!&ndash; <button class="pc-name-delete">삭제</button> &ndash;&gt;-->
+								<!--                                </div>-->
+								<!--                                <div class="pc-name">-->
+								<!--                                    <span class="pc-name-txt">PC 이름</span>-->
+								<!--                                    &lt;!&ndash; <button class="pc-name-delete">삭제</button> &ndash;&gt;-->
+								<!--                                </div>-->
+								<!--                            </div>-->
+								<!--                        </div>-->
+								<!-- </div> -->
+								<p class="subscribe-title">구독정보</p>
+								<div class="subscribe-scroll">
+									<div class="subscribe-info flex flex-center align-items-end">
+										<div>
+											<p class="remaining-name">멤버십</p>
+											<p class="remaining-date m-4 stt-expire-date">
+												0000년 00월 00일 까지
+											</p>
+											<p class="remaining-date stt-info">하루 제공 8시간</p>
+										</div>
+										<div class="m-width-20 text-align-end">
+											<p class="remaining-b stt-expire-count">D-29</p>
+											<p class="remaining-g stt-expire-time">00 : 00</p>
+										</div>
+									</div>
+									<div
+										class="subscribe-info flex flex-center align-items-end translation-info"
+									>
+										<div>
+											<p class="remaining-name">번역서비스</p>
+											<!--                                <p class="remaining-date m-4 translate-expire-date">0000년 00월 00일 까지</p>-->
+											<!--                                <p class="remaining-date">남은시간</p>-->
+										</div>
+										<div class="m-width-20 text-align-end">
+											<!--                                <p class="remaining-b translate-expire-count">D-29</p>-->
+											<p class="remaining-g translate-expire-time">00 : 00</p>
+										</div>
+									</div>
+									<!--                                      <div class="subscribe-info flex flex-center align-items-end">-->
+									<!--                                        <div>-->
+									<!--                                          <p class="remaining-name">번역서비스</p>-->
+									<!--                                          <p class="remaining-date  m-4">0000년 00월 00일 까지</p>-->
+									<!--                                          <p class="remaining-date">남은시간</p>-->
+									<!--                                        </div>-->
+									<!--                                        <div class="text-align-end">-->
+									<!--                                          <p class="remaining-b">D-29</p>-->
+									<!--                                          <p class="remaining-icon"></p>-->
+									<!--                                        </div>-->
+									<!--                                      </div>-->
+								</div>
+							</div>
+							<div id="tab2-bottom">
+								<!--                    <p>-->
+								<!--                        replace-app-version-->
+								<!--                        <a href="">업데이트가 필요합니다.</a>-->
+								<!--                    </p>-->
+							</div>
+							<div class="confirm-blur confirm-blur-380 modal" id="admin">
+								<div class="confirm-content modal-content">
+									<div class="confirm-top">
+										<div class="confirm-logo">TkitaCaption</div>
+										<button
+											class="confirm-close"
+											type="button"
+											onclick="fnHidePop('admin')"
+										></button>
+									</div>
+									<div class="confirm-sec">
+										<p class="confirm-comment">
+											로컬 엔진 세부 설정
+										</p>
+										<p class="confirm-comment user-uid" style="user-select: text">
+										</p>
+										<div class="confirm-admin">
+											<span>엔진프로세스갯수(int)</span>
+											<input
+												class="workerCount"
+												placeholder="정수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>탐색공간후보크기(int)</span>
+											<input
+												class="beamSize"
+												placeholder="정수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>무음구간검출길이(float)</span>
+											<input
+												class="silenceWindow"
+												placeholder="정수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>자주쓰는단어가중치(int)</span>
+											<input
+												class="contextWeight"
+												placeholder="정수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>엔진완료처리최대횟수(int)</span>
+											<input
+												class="setSplitCount"
+												placeholder="정수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>문장분리시간(float)</span>
+											<input
+												class="setSplitTime"
+												placeholder="실수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>엔진구둣점최대갯수(int)</span>
+											<input
+												class="setSplitDot"
+												placeholder="정수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>엔진완료처리점수(float)</span>
+											<input
+												class="setScore"
+												placeholder="실수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>음성증폭수치(float)</span>
+											<input
+												class="amplificationCount"
+												placeholder="실수 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>문장자연스럽게(bool)</span>
+											<input
+												class="isSentenceCompletion"
+												placeholder="T/F 입력"
+											/>
+										</div>
+										<div class="confirm-admin">
+											<span>문장구둣점기준처리(bool)</span>
+											<input
+												class="isSeparationPunctuation"
+												placeholder="T/F 입력"
+											/>
+										</div>
+										<div>
+											<span class="confirm-admin-alert"></span>
+										</div>
+									</div>
+									<div class="confirm-bottom">
+										<button
+											class="confirm-btn confirm-confirm edit-note-title"
+											type="button"
+											onclick="saveEngineSettingOption();"
+										>
+											확인
+										</button>
+										<button
+											class="confirm-btn confirm-cancel"
+											type="button"
+											onclick="fnHidePop('admin')"
+										>
+											취소
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="confirm-blur confirm-blur-380 modal" id="logout">
+								<div class="confirm-content modal-content">
+									<div class="confirm-top">
+										<div class="confirm-logo">TkitaCaption</div>
+										<button
+											class="confirm-close modal-close"
+											type="button"
+											onclick="fnHidePop('logout')"
+										></button>
+									</div>
+									<div class="confirm-sec">
+										<p class="confirm-comment">로그아웃 하시겠습니까?</p>
+										<div class="confirm-img logout-m"></div>
+									</div>
+									<div class="confirm-bottom">
+										<button
+											class="confirm-btn confirm-confirm"
+											id="logout-btn"
+											type="button"
+										>
+											확인
+										</button>
+										<button
+											class="confirm-btn confirm-cancel modal-close"
+											type="button"
+											onclick="fnHidePop('logout')"
+										>
+											취소
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab3" class="cont">
+							<div>
+								<p class="setting-warning">
+									<span class="tooltip"
+										>목록
+										<img src="../img/!.svg" alt="설정" />
+										<span class="tooltiptext tooltip-bottom-tab"
+											>자막으로 변환된 내용을 관리할 수 있는 페이지 입니다.
+											내보내기 기능을 통해 자막 내용을 문서로 저장할 수
+											있습니다.</span
+										>
+									</span>
+								</p>
+								<!--                    <div class="setting-hover">-->
+								<!--                        <p>자막으로 변환된 내용을 관리할 수 있는 페이지 입니다. 내보내기 기능을 통해 자막 내용을 문서로 저장할 수 있습니다.</p>-->
+								<!--                    </div>-->
+							</div>
+							<input
+								class="list-input outline-input"
+								id="note-input"
+								type="text"
+								placeholder="기록된 변환목록을 검색해보세요."
+							/>
+							<div class="all-list">
+								<div class="flex flex-center">
+									<div>
+										<button
+											class="list-btn all-selectbtn"
+											id="list-all-selectbtn"
+										>
+											선택
+										</button>
+										<button class="list-btn checkbtn"></button>
+									</div>
+									<div>
+										<button
+											class="list-btn exportbtn w-one"
+											onclick="fnShowPop('list_export_select')"
+											data="내보내기"
+										></button>
+										<button
+											class="list-btn trashbtn w-one"
+											onclick="fnShowPop('delete_note_select')"
+											data="삭제"
+										></button>
+									</div>
+								</div>
+								<p class="all-list-num">전체목록(10개)</p>
+								<div class="list-scroll note-list">
+									<div class="check-list-flex note-list-mb">
+										<label class="container all-checkbox">
+											<input
+												type="checkbox"
+												class="checkbox-in"
+												id="list-checkbox-in"
+											/>
+											<span class="checkmark"></span>
+										</label>
+										<div class="note-record">
+											<div class="note-record-top">
+												<p class="note-title">
+													노트 제목<span class="note-title-more"></span>
+												</p>
+												<p class="note-date">
+													2022 00월 00일 00시 00분 [ 00:30 ]
+												</p>
+											</div>
+											<div class="more-icon-box">
+												<button
+													class="note-more-btn note-title-insert w-one"
+													onclick="fnShowPop('file_title')"
+													data="수정"
+												></button>
+												<button
+													class="note-more-btn note-download w-one"
+													data="내보내기"
+												></button>
+												<button
+													class="note-more-btn note-trash w-one"
+													data="삭제"
+												></button>
+											</div>
+										</div>
+									</div>
+									<div class="check-list-flex note-list-mb">
+										<label class="container all-checkbox">
+											<input
+												type="checkbox"
+												class="checkbox-in"
+												id="list-checkbox-in"
+											/>
+											<span class="checkmark"></span>
+										</label>
+										<div class="note-record">
+											<div class="note-record-top">
+												<p class="note-title">
+													노트 제목<span class="note-title-more"></span>
+												</p>
+												<p class="note-date">
+													2022 00월 00일 00시 00분 [ 00:30 ]
+												</p>
+											</div>
+											<div class="more-icon-box">
+												<button
+													class="note-more-btn note-title-insert w-one"
+													onclick="fnShowPop('file_title')"
+													data="수정"
+												></button>
+												<button
+													class="note-more-btn note-download w-one"
+													data="내보내기"
+												></button>
+												<button class="note-more-btn note-trash w-one"></button>
+											</div>
+										</div>
+									</div>
+									<div class="check-list-flex note-list-mb">
+										<label class="container all-checkbox">
+											<input
+												type="checkbox"
+												class="checkbox-in"
+												id="list-checkbox-in"
+											/>
+											<span class="checkmark"></span>
+										</label>
+										<div class="note-record">
+											<div class="note-record-top">
+												<p class="note-title">
+													노트 제목<span class="note-title-more"></span>
+												</p>
+												<p class="note-date">
+													2022 00월 00일 00시 00분 [ 00:30 ]
+												</p>
+											</div>
+											<div class="more-icon-box">
+												<button
+													class="note-more-btn note-title-insert w-one"
+													onclick="fnShowPop('file_title')"
+													data="수정"
+												></button>
+												<button
+													class="note-more-btn note-download w-one"
+													data="내보내기"
+												></button>
+												<button
+													class="note-more-btn note-trash w-one"
+													data="삭제"
+												></button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div
+									class="confirm-blur confirm-blur-380 modal"
+									id="file_title"
+								>
+									<div class="confirm-content modal-content">
+										<div class="confirm-top">
+											<div class="confirm-logo">TkitaCaption</div>
+											<button
+												class="confirm-close"
+												type="button"
+												onclick="fnHidePop('file_title')"
+											></button>
+										</div>
+										<div class="confirm-sec">
+											<p class="confirm-comment">
+												수정할 노트파일 제목을 입력하세요.
+											</p>
+											<div class="NoteSEQ" style="display: none"></div>
+											<div class="confirm-file-name-insert">
+												<input
+													class="edit-note-title-input"
+													placeholder="취소를 누르면 기존 제목으로 저장됩니다."
+												/>
+											</div>
+										</div>
+										<div class="confirm-bottom">
+											<button
+												class="confirm-btn confirm-confirm edit-note-title"
+												type="button"
+											>
+												확인
+											</button>
+											<button
+												class="confirm-btn confirm-cancel"
+												type="button"
+												onclick="fnHidePop('file_title')"
+											>
+												취소
+											</button>
+										</div>
+									</div>
+								</div>
+								<div
+									class="confirm-blur confirm-blur-380 modal"
+									id="delete_note"
+								>
+									<div class="confirm-content modal-content">
+										<div class="confirm-top">
+											<div class="confirm-logo">TkitaCaption</div>
+											<button
+												class="confirm-close"
+												type="button"
+												onclick="fnHidePop('delete_note')"
+											></button>
+										</div>
+										<div class="confirm-sec">
+											<p class="confirm-comment delete-note-comment">
+												노트를 정말 삭제 하시겠습니까?
+											</p>
+											<div class="confirm-img"></div>
+											<div class="delete-NoteSEQ" style="display: none"></div>
+											<!--                                <div class="confirm-file-name-insert">-->
+											<!--                                    <input class="edit-note-title-input" placeholder="취소를 누르면 기존 제목으로 저장됩니다."/>-->
+											<!--                                </div>-->
+										</div>
+										<div class="confirm-bottom">
+											<button
+												class="confirm-btn confirm-confirm delete-note-title"
+												type="button"
+											>
+												확인
+											</button>
+											<button
+												class="confirm-btn confirm-cancel"
+												type="button"
+												onclick="fnHidePop('delete_note')"
+											>
+												취소
+											</button>
+										</div>
+									</div>
+								</div>
+								<div
+									class="confirm-blur confirm-blur-380 modal"
+									id="list_export"
+								>
+									<div class="confirm-content modal-content">
+										<div class="confirm-top">
+											<div class="confirm-logo">TkitaCaption</div>
+											<button
+												class="confirm-close"
+												type="button"
+												onclick="fnHidePop('list_export')"
+											></button>
+										</div>
+										<div class="confirm-sec">
+											<p class="confirm-comment">저장 파일 형식 선택</p>
+											<div class="export-NoteSEQ" style="display: none"></div>
+											<div class="file-img">
+												<button class="txt-img export-text"></button>
+												<button class="docx-img export-docx"></button>
+												<button class="hwpx-img export-hwpx"></button>
+												<button class="wav-img export-wav"></button>
+											</div>
+										</div>
+										<div class="confirm-bottom">
+											<button
+												class="confirm-btn confirm-cancel"
+												type="button"
+												onclick="fnHidePop('list_export')"
+											>
+												닫기
+											</button>
+											<!--                                <button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="tab4" class="cont">
+							<div>
+								<p class="setting-warning">
+									<span class="tooltip"
+										>자주쓰는단어
+										<img src="../img/!.svg" alt="설정" />
+										<span class="tooltiptext tooltip-bottom-tab"
+											>전문 용어, 고유명사 등 인식율이 낮은 단어가 있다면
+											자주쓰는단어에 등록 해 보세요. 해당 단어의 인식율이
+											향상됩니다.</span
+										>
+									</span>
+								</p>
+								<!--                    <div class="setting-hover">-->
+								<!--                        <p>전문 용어, 고유명사 등 인식율이 낮은 단어가 있다면 자주쓰는단어에 등록 해 보세요. 해당 단어의 인식율이 향상됩니다.</p>-->
+								<!--                    </div>-->
+							</div>
+							<input
+								class="word-input outline-input"
+								id="word-input"
+								type="text"
+								placeholder="입력 후 엔터"
+							/>
+							<div class="all-list">
+								<div class="flex flex-center">
+									<div>
+										<button
+											type="button"
+											class="list-btn all-selectbtn word-checkbtn"
+											id="word-all-selectbtn"
+										>
+											선택
+										</button>
+										<button type="button" class="list-btn checkbtn"></button>
+									</div>
+									<div>
+										<button
+											class="list-btn downbtn get-word w-one"
+											data="가져오기"
+										></button>
+										<button
+											class="list-btn exportbtn export-word w-one"
+											data="내보내기"
+										></button>
+										<input
+											type="file"
+											id="get-word-file"
+											accept=".txt"
+											style="
+												position: absolute;
+												width: 0;
+												height: 0;
+												padding: 0;
+												overflow: hidden;
+												border: 0;
+											"
+										/>
+										<button
+											class="list-btn trashbtn w-one"
+											onclick="fnShowPop('word_delete_select')"
+											data="삭제"
+										></button>
+									</div>
+								</div>
+								<!-- <div>
+                        <div class="warning-alert">
+                            <p>전체 단어가 삭제되었습니다.</p>
+                        </div>
+                    </div> -->
+								<div class="word-list list-scroll scroll-word">
+									<div class="check-list-flex">
+										<label class="container all-checkbox">
+											<input
+												type="checkbox"
+												class="checkbox-in"
+												id="word-checkbox-in"
+											/>
+											<span class="checkmark"></span>
+										</label>
+										<div class="word-input-selectbox">
+											<input
+												class="word-input-select"
+												placeholder="단어입니다."
+											/>
+											<button class="word-input-trash note-trash"></button>
+										</div>
+									</div>
+									<div class="check-list-flex">
+										<label class="container all-checkbox">
+											<input
+												type="checkbox"
+												class="checkbox-in"
+												id="word-checkbox-in"
+											/>
+											<span class="checkmark"></span>
+										</label>
+										<div class="word-input-selectbox">
+											<input
+												class="word-input-select"
+												placeholder="단어입니다."
+											/>
+											<button class="word-input-trash note-trash"></button>
+										</div>
+									</div>
+									<div class="check-list-flex">
+										<label class="container all-checkbox">
+											<input
+												type="checkbox"
+												class="checkbox-in"
+												id="word-checkbox-in"
+											/>
+											<span class="checkmark"></span>
+										</label>
+										<div class="word-input-selectbox">
+											<input
+												class="word-input-select"
+												placeholder="단어입니다."
+											/>
+											<button class="word-input-trash note-trash"></button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="confirm-blur confirm-blur-380 modal"
+								id="word_delete_select"
+							>
+								<div class="confirm-content modal-content">
+									<div class="confirm-top">
+										<div class="confirm-logo">TkitaCaption</div>
+										<button
+											class="confirm-close"
+											type="button"
+											onclick="fnHidePop('word_delete_select')"
+										></button>
+									</div>
+									<div class="confirm-sec">
+										<p class="confirm-comment delete-word-comment">
+											해당 기록을 삭제하시겠습니까?
+										</p>
+										<div class="confirm-img"></div>
+									</div>
+									<div class="confirm-bottom">
+										<button
+											class="confirm-btn confirm-confirm delete-word"
+											type="button"
+										>
+											확인
+										</button>
+										<button
+											class="confirm-btn confirm-cancel"
+											type="button"
+											onclick="fnHidePop('word_delete_select')"
+										>
+											취소
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <script>
+    const $el = document.querySelector(".history-scroll");
+    let i = 1;
+    setInterval(() => {
+        const eh = $el.clientHeight + $el.scrollTop;
+        const isScroll = $el.scrollHeight <= eh;
+        $el.innerHTML += `<p class="user-select">
+                ${i}
+            </p>`;
+        if (isScroll) {
+            $el.scrollTop = $el.scrollHeight;
+        }
+
+        i++
+    }, 800);
+</script> -->
+
+		<!--
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            warnintAlert = $('.warning-alert');
+            warnintAlert.fadeOut();
+        }, 3000)
+
+        let play
+
+        function callback() {
+            $(".translation").css({height: "99vh"});
+            setFadeOut = $('.text-sec-bottom, .text-sec-top');
+            setFadeOut.fadeOut();
+        }
+
+        $(".resize-butt").click(function () {
+            clearInterval(play);
+            $(".tab-section, .history").toggle();
+            if ($(".tab-section, .history").is(":visible") == false) {
+                $(".text-section").css({width: "100%"});
+                $(".translation").css({height: "calc((100vh - 100px) / 5 * 3)"});
+                play = setInterval(callback, 3000);
+            } else {
+                $(".text-section").css({width: "calc(100% - 380px)"});
+            }
+            if ($(".tab-section").is(":visible") == false) {
+                $(".setbtn").removeClass("active");
+            } else {
+                $(".setbtn").addClass("active");
+            }
+        });
+
+
+        $(window).resize(function () {
+            clearInterval(play);
+            $(".translation").css({height: "calc(100vh - 100px)"});
+            $('.text-sec-bottom, .text-sec-top').fadeIn();
+            if ($(window).width() < 820 || $(window).height() < 640) {
+                $(".tab-section").hide();
+                $(".setbtn").removeClass("active");
+            } else {
+                $(".tab-section").show();
+                $(".setbtn").addClass("active");
+            }
+
+            if ($(window).height() < 400) {
+                $(".history").hide();
+                $(".translation").css({height: "calc(100vh - 100px)"});
+                $(".div_icon").addClass("change");
+                $(".voice-text").addClass("change");
+                play = setInterval(callback, 3000);
+            } else {
+                $(".history").show();
+                $(".translation").css({height: "calc((100vh - 100px) / 5 * 3)"});
+                $(".div_icon").removeClass("change");
+                $(".voice-text").removeClass("change");
+            }
+
+            if ($(".tab-section").is(":visible") == false) {
+                $(".text-section").css({width: "100%"});
+
+            } else {
+                $(".text-section").css({width: "calc(100% - 380px)"});
+            }
+        });
+        // $(window).resize(function () {
+        //     clearInterval(play);
+        //     if ($(window).width() < 800 || $(window).height() < 300) {
+        //         $(".tab-section, .history").hide();
+        //         $(".translation").css({ height: "calc(100vh - 100px)" });
+        //         $(".div_icon").addClass("change");
+        //         $(".voice-text").addClass("change");
+        //         play = setInterval(callback, 3000);
+        //     } else {
+        //         $(".tab-section, .history").show();
+        //         $(".div_icon").removeClass("change");
+        //         $(".voice-text").removeClass("change");
+        //         $(".translation").css({ height: "calc((100vh - 100px) / 5 * 3)" });
+        //         $('.text-sec-bottom, .text-sec-top').show();
+        //     }
+        //     if ($(".tab-section").is(":visible") == false) {
+        //         $(".text-section").css({ width: "100%" });
+
+        //     } else {
+        //         $(".text-section").css({ width: "calc(100% - 380px)" });
+        //     }
+        // });
+        $('html').click(function (e) {
+            if ($(".tab-section, .history").is(":visible") == false) {
+                $(".translation").css({height: "calc(100vh - 100px)"});
+                $('.text-sec-bottom, .text-sec-top').fadeIn();
+            } else {
+                $(".translation").css({height: "calc((100vh - 100px) / 5 * 3)"});
+            }
+        });
+    });
+</script> -->
+
+		<script src="../js/swiper.min.js"></script>
+		<script src="../js/swiper.js"></script>
+		<script src="../js/script.js"></script>
+		<script src="../js/dark.js"></script>
+		<script src="../js/range.js"></script>
+		<!--<script src="../js/gauge.js"></script>-->
+		<!--<script src="../js/resize.js"></script>-->
+		<script src="../js/RecordRTC.js"></script>
+		<script src="../js/record.js"></script>
+		<script src="../js/recordTimer.js"></script>
+		<script src="../js/STTAdjust.js"></script>
+		<script src="../js/ReceiveSoc.js"></script>
+		<script src="../js/semantic-ui-range/range.js"></script>
+		<script src="../../function/setting/settingf.js"></script>
+		<script src="../../function/mypage/mypagef.js"></script>
+		<script src="../../function/note/notef.js"></script>
+		<script src="../../function/word/wordf.js"></script>
+		<script src="../../function/language.js"></script>
+		<script src="../../function/common.js"></script>
+		<script src="../../function/autoScroll.js"></script>
+		<script src="../../function/recordAction.js"></script>
+		<script src="../../function/share/clipboard.min.js"></script>
+		<script src="../../function/admin/adminf.js"></script>
+		<script src="../../function/share/qrcode.js"></script>
+		<script src="../../function/share/sharef.js"></script>
+		<script src="../../function/share/socket.js"></script>
+	</body>
+</html>

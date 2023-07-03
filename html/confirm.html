@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TkitaCaption</title>
+  <link href="css/common.css" rel="stylesheet" />
+  <!-- <style>
+    .confirm-blur {
+      background-color: #FFFFFFCC;
+    }
+    .confirm-content {
+      width: 320px;
+      height: 190px;
+      border-radius: 20px;
+      box-shadow: 10px 25px 20px #24415D4D;
+      padding: 12px 15px;
+    }
+    .confirm-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .confirm-logo {
+      background: url(../img/confirm_logo.svg) no-repeat center;
+    }
+    .confirm-close {
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 50%;
+      background: #EFF1F4 url(../img/confrom_X.svg) no-repeat center;
+    }
+    .confirm-sec {
+      text-align: center;
+      margin: 10px 5px;
+    }
+    .confirm-comment {
+      color: #575F6B;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .confirm-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #A7B1C226 url(../img/confirm_trash.svg) no-repeat center;
+      margin: 0 auto;
+    }
+    .confirm-bottom {
+      text-align: right;
+      margin: 20px 5px;
+    }
+    .confirm-btn {
+      color: #686D75;
+      font-size: 13px;
+      font-weight: 500;
+      border: none;
+      padding: 6px 18px;
+      border-radius: 114px;
+      background: linear-gradient(45deg, #F9F9FD, #F8F8F9);
+      box-shadow: -4px -4px 10px #FFFFFF, 3px 3px 6px #24415D4D;
+    }
+    .confirm-btn:first-of-type {
+      margin-right: 12px;
+    }
+  </style> -->
+</head>
+<body>
+
+
+  <div class="confirm-blur">
+    <div class="confirm-content">
+      <div class="confirm-top">
+        <div class="confirm-logo"></div>
+        <button class="confirm-close modal-close" type="button"></button>
+      </div>
+      <div class="confirm-sec">
+        <p class="confirm-comment">녹음이 종료되었습니다.</p>
+        <div class="confirm-img record-end"></div>
+      </div>
+      <div class="confirm-bottom align-center">
+        <button class="confirm-btn confirm-confirm" type="button" style="margin: 0;">확인</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="confirm-blur">
+    <div class="confirm-content">
+      <div class="confirm-top">
+        <div class="confirm-logo"></div>
+        <button class="confirm-close" type="button"></button>
+      </div>
+      <div class="confirm-sec">
+        <p class="confirm-comment">해당 기록을 삭제하시겠습니까?</p>
+        <div class="confirm-img"></div>
+      </div>
+      <div class="confirm-bottom">
+        <button class="confirm-btn confirm-cancel" type="button">취소</button>
+        <button class="confirm-btn confirm-confirm" type="button">확인</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="confirm-blur">
+    <div class="confirm-content">
+      <div class="confirm-top">
+        <div class="confirm-logo"></div>
+        <button class="confirm-close" type="button"></button>
+      </div>
+      <div class="confirm-sec">
+        <p class="confirm-comment">파일명을 입력하세요.</p>
+        <div class="confirm-file-name-insert">
+          <input placeholder="취소를 누르면 기본제목으로 저장됩니다." />
+        </div>
+      </div>
+      <div class="confirm-bottom">
+        <button class="confirm-btn confirm-cancel" type="button">취소</button>
+        <button class="confirm-btn confirm-confirm" type="button">확인</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="confirm-blur">
+    <div class="confirm-content">
+      <div class="confirm-top">
+        <div class="confirm-logo"></div>
+        <button class="confirm-close" type="button"></button>
+      </div>
+      <div class="confirm-sec">
+        <p class="confirm-comment">저장 파일 형식 선택</p>
+        <div class="file-img">
+          <div>
+            <button class="txt-img"></button>
+          </div>
+          <div>
+            <button class="docx-img"></button>
+          </div>
+          <div>
+            <button class="hwpx-img"></button>
+          </div>
+          <div>
+            <button class="wav-img"></button>
+          </div>
+        </div>
+      </div>
+      <div class="confirm-bottom">
+        <button class="confirm-btn confirm-cancel" type="button">취소</button>
+        <button class="confirm-btn confirm-confirm" type="button">확인</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="confirm-blur">
+    <div class="confirm-content">
+      <div class="confirm-top">
+        <div class="confirm-logo"></div>
+        <button class="confirm-close modal-close" type="button"></button>
+      </div>
+      <div class="confirm-sec">
+        <p class="confirm-comment">메모</p>
+        <textarea class="textarea-custom" placeholder="[0:00:00] 입력된 메모"></textarea>
+        <textarea class="textarea-custom" placeholder="여기에 내용을 입력하세요 Enter : 메모 저장 Shift + Enter : 줄바꿈"></textarea>
+      </div>
+      <div class="confirm-bottom">
+        <button class="confirm-btn confirm-cancel modal-close" type="button">취소</button>
+        <button class="confirm-btn confirm-confirm" type="button">확인</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="confirm-blur">
+    <div class="confirm-content">
+      <div class="confirm-top">
+        <div class="confirm-logo"></div>
+        <button class="confirm-close modal-close" type="button"></button>
+      </div>
+      <div class="confirm-sec">
+        <p class="confirm-comment">로그아웃 하시겠습니까?</p>
+        <div class="confirm-img logout-m"></div>
+      </div>
+      <div class="confirm-bottom">
+        <button class="confirm-btn confirm-cancel modal-close" type="button">취소</button>
+        <button class="confirm-btn confirm-confirm" type="button">확인</button>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

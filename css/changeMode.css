@@ -1,0 +1,29 @@
+.changeMode-window {
+  top: 0;
+}
+.changeMode-top {
+  top: 30px;
+}
+.changeMode-bottom {
+  bottom: 0;
+}
+.changeMode {
+  display: none;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  -webkit-app-region: drag;
+}
+.range-box,
+.window-set,
+.icon-box {
+  -webkit-app-region: no-drag;
+}
+
+.user-select-none {
+  user-select: none !important;
+}
+
+.show {
+  display: flex;
+}

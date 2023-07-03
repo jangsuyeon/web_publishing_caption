@@ -1,0 +1,50 @@
+<svg id="그룹_20306" data-name="그룹 20306" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="380" height="620" viewBox="0 0 380 620">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.012" y1="0.571" x2="0.808" y2="1.015" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2848ff"/>
+      <stop offset="1" stop-color="#2848ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-opacity="0.6"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="사각형_27188" data-name="사각형 27188" width="32.803" height="30.459" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="사각형_27185" data-name="사각형 27185" width="4.686" height="6.731" fill="none"/>
+    </clipPath>
+  </defs>
+  <rect id="사각형_27190" data-name="사각형 27190" width="257" height="620" fill="#2848ff"/>
+  <rect id="사각형_27189" data-name="사각형 27189" width="273" height="620" fill="url(#linear-gradient)"/>
+  <g id="그룹_20305" data-name="그룹 20305">
+    <rect id="사각형_27191" data-name="사각형 27191" width="94" height="390" transform="translate(286)" fill="url(#linear-gradient-2)"/>
+    <g id="그룹_20304" data-name="그룹 20304">
+      <rect id="사각형_27192" data-name="사각형 27192" width="94" height="411" transform="translate(380 620) rotate(180)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+  <text id="실시간_자막은_역시_티키타캡션" data-name="실시간 자막은 
+역시
+티키타캡션" transform="translate(51 305)" fill="#fff" font-size="24" font-family="NotoSansKR-Light, Noto Sans KR" font-weight="300" letter-spacing="-0.025em"><tspan x="0" y="0">실시간 자막은 </tspan><tspan x="0" y="36">역시</tspan><tspan font-family="NotoSansKR-Medium, Noto Sans KR" font-weight="500"><tspan x="0" y="72">티키타캡션</tspan></tspan></text>
+  <g id="그룹_20300" data-name="그룹 20300" transform="translate(51 237.784)">
+    <g id="그룹_20299" data-name="그룹 20299" clip-path="url(#clip-path)">
+      <g id="그룹_20294" data-name="그룹 20294" transform="translate(0 0)">
+        <g id="그룹_20293" data-name="그룹 20293" clip-path="url(#clip-path)">
+          <path id="패스_51323" data-name="패스 51323" d="M25.774,0H7.029A7.038,7.038,0,0,0,0,7.029V16.4A7.038,7.038,0,0,0,7.029,23.43h4.037l11.158,6.694a2.343,2.343,0,0,0,3.55-2.008V23.43A7.038,7.038,0,0,0,32.8,16.4V7.029A7.037,7.037,0,0,0,25.774,0m2.343,16.4a2.345,2.345,0,0,1-2.343,2.343H23.431a2.342,2.342,0,0,0-2.343,2.342h0v2.889l-8.166-4.9a2.358,2.358,0,0,0-1.207-.333H7.029A2.345,2.345,0,0,1,4.686,16.4V7.029A2.345,2.345,0,0,1,7.029,4.686H25.774a2.345,2.345,0,0,1,2.343,2.343Z" transform="translate(0 0)" fill="#fff"/>
+          <path id="패스_51324" data-name="패스 51324" d="M31.393,31.821A2.806,2.806,0,1,1,34.2,34.627a2.806,2.806,0,0,1-2.806-2.806" transform="translate(-21.876 -20.219)" fill="#fff"/>
+          <path id="패스_51325" data-name="패스 51325" d="M59.235,31.821a2.806,2.806,0,1,1,2.806,2.806,2.806,2.806,0,0,1-2.806-2.806" transform="translate(-41.277 -20.219)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="그룹_20296" data-name="그룹 20296" transform="translate(28.117 11.875)">
+        <g id="그룹_20295" data-name="그룹 20295" clip-path="url(#clip-path-3)">
+          <image id="사각형_27184" data-name="사각형 27184" width="11.823" height="11.823" transform="translate(-3.561 -2.637)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAG8SURBVFhH7ZexTsMwFEVTKAszKzMzKhsrf8AMKV9GBR/AyszcmZWZmQ2GcF7kVG7y7Np+aaZc6fXe2FXuUaPiUjVNM8qs6uZBW7fMQl6sullX99gZsxTfbqpnWbfqxLlVf/4A+ySLVpnhALnD9uBkWF/jJpngALjFBmDdWAGL4Si+xlQofyyARXAUXmEqjDa8v8azlQ1H0SXWFf96OTolgFlwFFxgannK5AImw3Hjc0wtzRnu84gnKeeTU8u8yXnESYBZJwQ33Z0CbkI5trfLnCQveFDZxxeAB0t7Oba3BPAVV1V0tnqAwVIvx/baHAIsPvgdYLQ0cK1mDdD0qwTAUyxa2suxvTb7v2hMcCIPMFoauFZzB2iGEznAg6W9HNuTL8pmFDgRgPI3Uy0K5Nhem0eDE3mA0VIlq3ujwokcYAqQnwd7PNa30eFEAC4wtTSQ964Be8fH+UJo8gBT4HywD7zV0eBEDjAZDrAtvtNR4ToBGQTqMmCf+J4mgRM5QBUOsC98oMngRAAO4AD7xlVNCifyAOVR/rSLIQnc1LOqm6W23p/JP7kc5fwPMblmuFLNcKWa4Uo1w5Wpqv4Bdk7BRh+K2k8AAAAASUVORK5CYII="/>
+        </g>
+      </g>
+      <g id="그룹_20298" data-name="그룹 20298" transform="translate(0 11.875)">
+        <g id="그룹_20297" data-name="그룹 20297" clip-path="url(#clip-path-3)">
+          <image id="사각형_27186" data-name="사각형 27186" width="11.823" height="11.823" transform="translate(-3.638 -2.637)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHCSURBVFhH7Ze7TsNAEEUdHgU1LTU1EjTU1NRUkPwZQfAB1LS0UKflD6hJhMwZx4nG63G8r5jGRxrd2QVlDkOCTFGWZba6nJYz6z62DopMXM2KO2JFztY36WSRQ+iWWFIrqVyCyXKI3BCVlC7up2QSSXIIXBMtMaraYqpgtByDLwhLrFEpglFyDDwnTBmjlnz/AxlMsByDzghLYmfFCAbJMeCUMIf7VKjgRP7Y+cALnxBH1LEqffbuP+bFM9lLyObMbcQUP+g92Yv35gRe9JDYbMHcSkjPBl/IToLkBCWoB7nnoB7JR7JFsJxQC+pBjWERvSkYJScgKO9Xc5Bz9u4RnJNbouUEJagHueegXgsmyQm1YNdQ9+zVI/hEpssJCE4Ia5B79u5FMIucoAT1IPcc1GeTE2rBrqHuubfPKrcBSWuoe97Z82t93YucUAt2Cez6mnwg3sg8H4guEAyWQ+ydrNirnKAEe+UQ+yS37F1OqAVbMvqM2IJsMIicgKB+omnIIfZFtgh6Ek4BgV/Cer6T/9RMBtvchnqD280h/S33FoPLCQhWDwyI/axvbP5FzpfB3nMxjHKxjHKxjHKxjHJxFMUfK6BG5fgX4gQAAAAASUVORK5CYII="/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

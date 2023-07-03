@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TkitaCaption</title>
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/dark.css" rel="stylesheet" />
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body data-theme="light-mode">
+    <div class="sys-modal">
+        <div class="modal-blur">
+            <div class="confirm-content modal-content" style="width: 434px;">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                    <button class="confirm-close modal-close" type="button"></button>
+                </div>
+                <div class="modal-sec">
+                    <p class="text-title">채팅 자동번역 기능을 함께 활성화 하시겠습니까?</p>
+                    <p class="text-comment">채팅 자동번역 기능을 활성화 시, 번역되는 글자 수에 따라잔여 번역시간이 차감됩니다.</p>
+                    <p class="text-comment-blue">*차감 시간 : 200글자 당 1분</p>
+                    <p class="text-comment-blue">
+                        *자동번역 기능을 나중에 활성화할 경우,<br />
+                        활성화된 시점부터 발생된 채팅에 대해서만 자동 번역이 진행됩니다.
+                    </p>
+                </div>
+                <div class="confirm-bottom">
+                    <button class="confirm-btn confirm-cancel" type="button">
+                        취소
+                    </button>
+                    <button class="confirm-btn complete" type="button">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sys-modal" id="reservationModal">
+        <div class="modal-blur">
+            <div class="confirm-content modal-content" style="width: 349px;">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                    <button class="confirm-close modal-close" type="button" onclick="fnHidePop('reservationModal')"></button>
+                </div>
+                <div class="modal-sec">
+                    <p class="reservation-modal-title">공유 예약</p>
+                    <div>
+                        <div class="reservation-input">
+                            <span class="title">주제</span>
+                            <input type="text" class="share-main-title" placeholder="공유 제목을 입력해주세요." />
+                        </div>
+                        <div class="reservation-input">
+                            <span class="title">일시</span>
+                            <input type="date" class="share-main-date" />
+                            <input type="time" class="share-main-time" />
+                        </div>
+                    </div>
+                </div>
+                <div class="confirm-bottom">
+                    <button class="confirm-btn confirm-cancel" type="button" onclick="fnHidePop('reservationModal')">
+                        취소
+                    </button>
+                    <button class="confirm-btn complete" type="button">예약</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sys-modal">
+        <div class="modal-blur">
+            <div class="confirm-content modal-content" style="width: 277px;">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                    <button class="confirm-close modal-close" type="button"></button>
+                </div>
+                <div class="modal-sec">
+                    <p class="delete-comment">예약 목록을 삭제하시겠습니까?</p>
+                    <p class="text-comment-blue">*삭제된 목록은 복구되지 않습니다.</p>
+                </div>
+                <div class="confirm-bottom" style="margin-top: 32px;">
+                    <button class="confirm-btn confirm-cancel" type="button">
+                        취소
+                    </button>
+                    <button class="confirm-btn delete" type="button">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="window-setting changeMode-window">
+            <div class="top-logo">
+                <p>TkitaCaption_공유 설정</p>
+            </div>
+            <div class="window-act">
+                <a href="javascript:void(0);" class="w-lower"></a>
+                <a href="javascript:void(0);" class="w-resize"></a>
+                <a href="javascript:void(0);" class="w-close"></a>
+            </div>
+        </div>
+        <div class="text-section share" style="height: calc(100vh - 30px);">
+            <div id="tab5" class="cont">
+                <div id="tab5-top" class="border-14">
+                    <div class="share-info mb-24">
+                        <p class="setting-warning">
+                            <span class="tooltip">
+                                자막 공유
+                                <img src="../img/!.svg" alt="설정" />
+                                <span class="tooltiptext tooltip-bottom-tab">
+                                    공유를 하여 현재 자막을 여러 사람과 함께 볼 수 있습니다.
+                                </span>
+                            </span>
+                        </p>
+                        <button class="iconBtn share-chat w-one" data="채팅창"></button>
+                        <button class="iconBtn share-url w-one" onclick="" data="URL공유"
+                        data-clipboard-text="None"></button>
+                        <button class="iconBtn share-qr w-one" onclick="createQRCode();" data="QR공유"></button>
+                    </div>
+                    <div class="share-start-box">
+                        <button class="share-start">공유시작</button>
+                    </div>
+                </div>
+                <div id="tab5-sec" class="setting-select padding-set">
+                    <div class="setting-box">
+                        <div class="container-tool inline-box">
+                            <div class="inner-container">
+                                <div class="tooltip">
+                                    번역언어 선택
+                                    <span class="tooltiptext tooltip-top">
+                                        자막이 선택된 언어로 자동 번역되어 표시됩니다.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="all-selectbtn-share arrow" id="share-select-translate"
+                            onclick="shareSelectTranslate();">
+                            <span class="color-change">0개</span> 언어선택
+                        </button>
+                    </div>
+                    <div class="setting-box">
+                        <div class="container-tool inline-box">
+                            <div class="inner-container">
+                                <div class="tooltip">
+                                    제목
+                                    <span class="tooltiptext tooltip-top">
+                                        제목
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-share-p">제목 없음</p>
+                    </div>
+                    <div class="setting-box">
+                        <div class="container-tool inline-box">
+                            <div class="inner-container">
+                                <div class="tooltip">
+                                    참가자 수
+                                    <span class="tooltiptext tooltip-top">
+                                        실시간 공유에 참가 중인 인원수 입니다
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-share-p"><span class="color-change">120</span>명</p>
+                    </div>
+                    <div class="setting-box">
+                        <div class="container-tool inline-box">
+                            <div class="inner-container">
+                                <div class="tooltip">
+                                    참가자 채팅
+                                    <span class="tooltiptext tooltip-top">
+                                        실시간으로 참가자들과 대화를 주고받을 수 있습니다.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inline-box">
+                            <div class="swichbox right" id="engine_language">
+                                <a class="swichbtn font-color">비허용</a>
+                                <a class="swichbtn">허용</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="setting-box">
+                        <div class="container-tool inline-box">
+                            <div class="inner-container">
+                                <div class="tooltip">
+                                    잔여 번역시간
+                                    <span class="tooltiptext tooltip-top">
+                                        현재 남은 번역시간 입니다.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-share-p color-change">00:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-section" style="padding: 24px 30px;">
+            <!-- <div class="share-no">
+            <p>현재 예정된 공유가 없습니다.</p>
+             </div> -->
+            <div class="share-yes">
+                <div class="share-list-box">
+                    <p class="setting-warning">
+                        <span class="tooltip">
+                            예약 목록
+                            <img src="../img/!.svg" alt="설정">
+                            <span class="tooltiptext tooltip-bottom-tab">
+                                우측 버튼을 클릭하여 
+                                공유 예약을 시작해보세요.
+                            </span>
+                        </span>
+                    </p>
+                    <button class="iconBtn clock w-one" data="공유예약" onclick="fnShowPop('reservationModal');"></button>
+                    <input class="list-input outline-input" id="note-input" type="text"
+                        placeholder="찾으시는 예약 제목을 입력해주세요." />
+                    <div class="all-list">
+                        <div class="flex flex-center">
+                            <div>
+                                <button class="list-btn all-selectbtn" id="list-all-selectbtn">
+                                    선택
+                                </button>
+                                <button class="list-btn checkbtn"></button>
+                            </div>
+                            <div>
+                                <button class="list-btn trashbtn w-one" data="삭제"></button>
+                            </div>
+                        </div>
+                        <p class="all-list-num">전체목록(10개)</p>
+                        <div class="list-scroll share-list">
+                            <div class="check-list-flex note-list-mb">
+                                <label class="container all-checkbox">
+                                    <input type="checkbox" class="checkbox-in" id="list-checkbox-in" />
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="note-record">
+                                    <div class="note-record-top">
+                                        <p class="note-title">
+                                            노트 제목<span class="note-title-more"></span>
+                                        </p>
+                                        <p class="note-date">
+                                            2022 00월 00일 00시 00분 [ 00:30 ]
+                                        </p>
+                                    </div>
+                                    <div class="more-icon-box">
+                                        <div class="share-res">
+                                            <div>
+                                                <button type="button" class="share-list-btn w-one qr"
+                                                    data="QR공유"></button>
+                                                <button type="button" class="share-list-btn w-one url"
+                                                    data="URL공유"></button>
+                                                <button type="button" class="share-list-btn w-one modify"
+                                                    data="수정"></button>
+                                                <button type="button" class="share-list-btn w-one trash"
+                                                    data="삭제"></button>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="share-list-start">시작하기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 공유시작 눌렀을때
+        $(document).on("click", ".share-start", function (e) {
+            $(this).toggleClass("active");
+            if($(this).hasClass("active")) {
+                $(this).text("공유 종료");
+            } else {
+                $(this).text("공유 시작");
+            }
+        });
+
+        // 전체선택했을때 변화
+        $(document).on("click", ".checkbtn", function (e) {
+            if ($(this).hasClass("active")) {
+                $(".checkbox-in").prop("checked", false);
+                $(".note-record").removeClass("active-b");
+            } else {
+                $(".checkbox-in").prop("checked", true);
+                $(".note-record").addClass("active-b");
+            }
+            $(this).toggleClass("active");
+        });
+
+        $(document).on("change", ".checkbox-in", function (e) {
+            // 전체선택 했을때 .checkbtn 선택됨
+            var total = $(".checkbox-in").length;
+            var checked = $(".checkbox-in:checked").length;
+            if (total != checked) {
+                $(".checkbtn").removeClass("active");
+            } else {
+                $(".checkbtn").addClass("active");
+            }
+            // input:checked 일때 border파란색으로 바뀜
+            if ($(this).is(":checked")) {
+                $(this).parents().siblings(".note-record").addClass("active-b");
+            } else {
+                $(this).parents().siblings(".note-record").removeClass("active-b");
+            }
+        });
+    </script>
+
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

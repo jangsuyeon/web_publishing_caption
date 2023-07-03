@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TkitaCaption</title>
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/dark.css" rel="stylesheet" />
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .text-sec-sec {
+            background-color: #f9f9fd;
+        }
+        .checkmark {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -6%);
+        }
+
+        .share-list-scroll {
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .share-list {
+            display: inline-block;
+            width: 49%;
+        }
+
+        .share-list-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .share-select {
+            width: 95%;
+            border: 1px solid transparent;
+            background-color: #fff;
+            padding: 14px;
+            box-shadow: 0 3px 5px #24415d29;
+            margin: 10px;
+        }
+
+        [data-theme="dark-mode"] .share-select {
+            background-color: #26292E;
+            border-color: #26292E;
+        }
+
+        .share-select-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .share-select-box .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        [data-theme="dark-mode"] .share-select-title {
+            color: #ffffff;
+        }
+
+        .share-select.border-change {
+            border: 1px solid #335fff;
+        }
+    </style>
+</head>
+
+<body data-theme="dark-mode" style="min-width: 280px; min-height: 150px; height: 100vh;">
+
+    <div class="text-section-resize">
+        <div class="window-setting">
+            <div class="top-logo">
+                <p>Tkita Caption</p>
+            </div>
+            <div class="window-act">
+                <a href="javascript:void(0);" class="w-close" onclick="hideShareTranslateWindow();"></a>
+            </div>
+        </div>
+        <div class="text-sec-sec" style="-webkit-app-region: no-drag; min-width: 280px; height: calc(100vh - 33px);">
+            <div class="share-list-scroll">
+            </div>
+            <div class="confirm-bottom">
+                <button class="confirm-btn confirm-confirm" type="button" onclick="setSelectTranslateData();">확인</button>
+                <button class="confirm-btn confirm-cancel modal-close" type="button" onclick="hideShareTranslateWindow();">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).on('click', '.share-select', function () {
+            $(this).toggleClass("border-change");
+            if ($(this).hasClass("border-change")) {
+                $(this).siblings(".container").children(".checkbox-in").prop("checked", true);
+            } else {
+                $(this).siblings(".container").children(".checkbox-in").prop("checked", false);
+            }
+        })
+        $(document).on('click', '.checkbox-in', function () {
+            if ($(this).is(":checked")) {
+                $(this).parent(".container").siblings(".share-select").addClass("border-change");
+            } else {
+                $(this).parent(".container").siblings(".share-select").removeClass("border-change");
+            }
+        })
+    </script>
+
+
+<script src="../../function/share/shareTranslateList.js"></script>
+<script src="../../function/share/selectTranslate.js"></script>
+</body>
+
+</html>

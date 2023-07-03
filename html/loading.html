@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TkitaCaption</title>
+    <link href="../css/common.css" rel="stylesheet"/>
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="sys-modal" id="system-alert" >
+    <div class="confirm-blur" style="position: fixed; z-index: 10; top: 0; left: 0; width: 100%; height: 100%;">
+        <div class="confirm-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="confirm-top">
+                <div class="confirm-logo">TkitaCaption</div>
+            </div>
+            <div class="confirm-sec">
+                <div class="loading-container">
+                    <div class="loading"></div>
+                    <div id="system-alert-text"></div>
+                </div>
+            </div>
+            <div class="confirm-bottom">
+                <button class="confirm-btn confirm-cancel" id="system-alert-close-btn" type="button" onclick="systemAlertOff()">닫기</button>
+                <!--<button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="window-loading">
+<!--    <div class="window-setting">-->
+<!--        <div class="top-logo">-->
+<!--            <p>Tkita caption</p>-->
+<!--        </div>-->
+<!--        <div class="window-act">-->
+<!--            <a href="" class="w-lower"></a>-->
+<!--            <a href="" class="w-resize"></a>-->
+<!--            <a href="" class="w-close"></a>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div id="loading-section">
+        <div id="loading-logo">
+            <img src="../img/loading-logo.svg" alt="로고" />
+          </div>
+    </div>
+</div>
+<script src="../js/script.js"></script>
+<script src="../../function/loading/loadingf.js"></script>
+<!--<script src="../../function/loading/ConnectServer.js"></script>-->
+<!--<script src="../../function/loading/RecordRTC.js"></script>-->
+</body>
+</html>

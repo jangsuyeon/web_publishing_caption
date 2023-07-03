@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../css/chat.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/dark.css" rel="stylesheet" />
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body data-theme="dark-mode">
+    <div class="sys-modal">
+        <div class="modal-blur">
+            <div class="confirm-content modal-content" style="width: 301px;">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                    <button class="confirm-close modal-close" type="button"></button>
+                </div>
+                <div class="modal-sec" style="margin: 0 18px;">
+                    <p class="text-title">참가자 채팅을 비허용 하시겠습니까?</p>
+                    <p class="text-comment-blue">*비허용 상태가 되면, 참가자들은 채팅을 <br />전송할 수 없습니다.</p>
+                </div>
+                <div class="confirm-bottom">
+                    <button class="confirm-btn confirm-cancel" type="button" onclick="systemAlertOff()">
+                        취소
+                    </button>
+                    <button class="confirm-btn complete" type="button">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sys-modal">
+        <div class="modal-blur">
+            <div class="confirm-content modal-content" style="width: 301px;">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                    <button class="confirm-close modal-close" type="button"></button>
+                </div>
+                <div class="modal-sec" style="margin: 0 18px;">
+                    <p class="text-title">참가자 채팅을 허용 하시겠습니까?</p>
+                </div>
+                <div class="confirm-bottom">
+                    <button class="confirm-btn confirm-cancel" type="button" onclick="systemAlertOff()">
+                        취소
+                    </button>
+                    <button class="confirm-btn complete" type="button">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sys-modal">
+        <div class="modal-blur">
+            <div class="confirm-content modal-content" style="width: 336px;">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                    <button class="confirm-close modal-close" type="button"></button>
+                </div>
+                <div class="modal-sec" style="margin: 0;">
+                    <p class="participant-length">참가자(17)</p>
+                    <div class="participant-list">
+                        <div class="participant-profile">
+                            <div class="participant-img">
+                                <img src="../img/icon_profile.svg" alt="프로필사진" />
+                            </div>
+                            <p class="participant-name">name</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="confirm-bottom">
+                    <button class="confirm-btn confirm-cancel" type="button" onclick="systemAlertOff()">
+                        취소
+                    </button>
+                    <button class="confirm-btn complete" type="button">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sys-modal">
+        <div class="modal-blur">
+            <div class="confirm-content modal-content" style="width: 301px;">
+                <div class="confirm-top">
+                    <div class="confirm-logo">TkitaCaption</div>
+                    <button class="confirm-close modal-close" type="button"></button>
+                </div>
+                <div class="modal-sec" style="margin: 0 18px;">
+                    <p class="text-title">채팅 자동번역 기능을 비활성화 하시겠습니까?</p>
+                </div>
+                <div class="confirm-bottom">
+                    <button class="confirm-btn confirm-cancel" type="button" onclick="systemAlertOff()">
+                        취소
+                    </button>
+                    <button class="confirm-btn complete" type="button">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-page">
+        <div class="chat-top">
+            <div class="chat-top-logo">
+                <img src="../img/confirm_logo_dark.svg" alt="logo" />
+                <span>TkitaCaption</span>
+            </div>
+            <button class="close"></button>
+        </div>
+        <div class="chatting">
+            <div class="chat-control">
+                <div></div>
+                <p>채팅</p>
+                <div>
+                    <button type="button" data="참가자 확인" class="control-icon user w-one"></button>
+                    <button type="button" data="채팅 자동번역 활성화/비활성화" class="control-icon translate w-one"></button>
+                    <button type="button" data="채팅 허용/비허용" class="control-icon chat w-one"></button>
+                </div>
+            </div>
+            <div class="chat-content" id="chat-content">
+                <div class="chat-comment activate">&nbsp;&nbsp; Host가 채팅 기능을 비활성화 하였습니다. &nbsp;&nbsp;</div>
+                <div class="counterPart-box">
+                    <p>Guest</p>
+                    <div class="counterPart">
+                        <div class="balloon balloon-p">
+                            <p>chatting content</p>
+                            <p class="chat-translation">chatting translation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mePart-box">
+                    <div class="mePart">
+                        <div class="balloon balloon-m">
+                            <p>chatting content</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="always-down" id="always-down" onclick="goBottom();"></a>
+            </div>
+            <div class="chat-write">
+                <input class="chat-write-input" placeholder="내용 입력 후 [Enter] 를 눌러주세요. " />
+                <button class="write-send" disabled></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".chat-write-input").on('input', function(){
+            if($(".chat-write-input").val() == '') {
+                $(".write-send").attr("disabled" , true);
+            }else {
+                $(".write-send").attr("disabled" , false);
+            }
+        });
+
+        function goBottom () {
+            let chatContent = document.querySelector(".chat-content");
+            chatContent.scrollTop = chatContent.scrollHeight;
+        };
+    </script>
+
+</body>
+
+</html>

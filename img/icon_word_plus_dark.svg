@@ -1,0 +1,10 @@
+<svg id="icon_자주쓰는단어등록" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_27195" data-name="사각형 27195" width="20" height="20" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_20310" data-name="그룹 20310" clip-path="url(#clip-path)">
+    <path id="패스_51328" data-name="패스 51328" d="M17.3,9.744a.7.7,0,0,1-.5,1.2H10.7v6.123a.713.713,0,0,1-.732.7.7.7,0,0,1-.7-.7V10.945H3.174a.663.663,0,0,1-.674-.7.679.679,0,0,1,.2-.5.649.649,0,0,1,.469-.205H9.268V3.474a.7.7,0,0,1,.7-.7.714.714,0,0,1,.732.7V9.539H16.8a.682.682,0,0,1,.5.205" fill="#8D929B"/>
+  </g>
+</svg>

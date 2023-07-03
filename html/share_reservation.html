@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/dark.css" rel="stylesheet" />
+    <script src="../js/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #f9f9fd;
+        }
+
+        .reservation-area {
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        .dateTime {
+            width: calc(100% - 83px);
+            background-color: transparent;
+            padding: 6px 10px;
+            border: 1px solid #e8eaf2;
+            outline: none;
+            position: relative;
+        }
+
+        .share-reservation-list-scroll {
+            height: calc(100vh - 210px);
+            overflow-y: auto;
+        }
+
+        .note-record {
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .note-record-top {
+            padding: 14px;
+        }
+
+        .more-icon-box {
+            border-top: 1px solid #e8eaf2;
+            margin-top: 0;
+        }
+
+        .more-icon-box>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .more-icon-box>div>div {
+            height: 30px;
+        }
+
+        .reservation-btn {
+            border: none;
+            background-color: transparent;
+            margin-left: 10px;
+        }
+
+        .note-more-btn {
+            width: 30px;
+            height: 30px;
+        }
+
+        .note-more-btn.qr {
+            background: url(../img/share_qr.svg) no-repeat center;
+        }
+
+        .note-more-btn.url {
+            background: url(../img/share_url.svg) no-repeat center;
+        }
+
+        .DateError {
+            color: #DB2828;
+            margin-top: 15px;
+            margin-left: 15px;
+            display: none;
+        }
+
+        [data-theme="dark-mode"] .reservation-btn {
+            color: #D4D7E3;
+        }
+        [data-theme="dark-mode"] .dateTime {
+            border-color: #101113;
+            color: #D4D7E3;
+        }
+
+        [data-theme="dark-mode"] .list-btn {
+            background: #343A40;
+            color: #D4D7E3;
+        }
+
+        input[type="datetime-local"]::-webkit-clear-button,
+        input[type="datetime-local"]::-webkit-inner-spin-button {
+            opacity: 0;
+        }
+
+        input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            background: transparent;
+            z-index: 1;
+        }
+
+        .dateTime:after {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            content: '';
+            width: 20px;
+            height: 22px;
+            background: url(../img/icon_datepicker.svg) no-repeat center;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        [data-theme="dark-mode"] .dateTime:after {
+            background-image: url(../img/icon_datepicker_dark.svg);
+        }
+    </style>
+</head>
+
+<body data-theme="dark-mode">
+    <div class="text-section-resize">
+        <div class="window-setting">
+            <div class="top-logo">
+                <p>Tkita Caption</p>
+            </div>
+            <div class="window-act">
+                <a href="javascript:void(0);" class="w-close" onclick="hideShareReservationWindow();"></a>
+            </div>
+        </div>
+        <div class="text-sec-sec" style="-webkit-app-region: no-drag; min-width: 280px; height: calc(100vh - 33px);">
+            <div class="reservation-area border-14">
+                <input type="datetime-local" class="dateTime" />
+                <button class="list-btn" onclick="reservationRoom();">예약하기</button>
+                <div class="DateError">asdasdasd</div>
+            </div>
+            <div class="share-reservation-list-scroll">
+            </div>
+            <div class="confirm-bottom">
+<!--                <button class="confirm-btn confirm-confirm" type="button">확인</button>-->
+                <button class="confirm-btn confirm-cancel modal-close" type="button" onclick="hideShareReservationWindow();">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).on("click", ".note-record-top", function () {
+            $(this).parents().siblings().children().siblings(".more-icon-box").stop().hide();
+            $(this).siblings(".more-icon-box").stop().toggle();
+            if ($(this).siblings(".more-icon-box").is(":visible") == false) {
+                $(this).parents(".note-record").addClass("border-change");
+                $(this).children().children(".note-title-more").addClass("active");
+            } else {
+                $(".note-record").removeClass("border-change");
+                $(".note-title-more").removeClass("active");
+            }
+            $(this).parents(".note-record").toggleClass("border-change");
+            $(this).children().children(".note-title-more").toggleClass("active");
+            if ($("#list-all-selectbtn").hasClass("active")) {
+                $(".more-icon-box").stop().hide();
+                $(".note-record").removeClass("border-change");
+                $(".note-title-more").removeClass("active");
+            }
+        });
+    </script>
+    <script src="../../function/share/clipboard.min.js"></script>
+    <script src="../../function/share/qrcode.js"></script>
+    <script src="../../function/share/shareReservationf.js"></script>
+</body>
+
+</html>

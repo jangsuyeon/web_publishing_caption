@@ -1,0 +1,9 @@
+<svg id="checkbox_1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="그룹_4084" data-name="그룹 4084">
+    <g id="사각형_133" data-name="사각형 133" fill="#fff" stroke="#575f6b" stroke-width="1">
+      <rect width="16" height="16" rx="4" stroke="none"/>
+      <rect x="0.5" y="0.5" width="15" height="15" rx="3.5" fill="none"/>
+    </g>
+  </g>
+  <path id="check" d="M3.635,72.673.157,69.306a.507.507,0,0,1,0-.733l.757-.733a.548.548,0,0,1,.757,0l2.343,2.269L9.033,65.25a.548.548,0,0,1,.757,0l.757.733a.507.507,0,0,1,0,.733L4.392,72.673a.548.548,0,0,1-.757,0Z" transform="translate(2.698 -61.223)" fill="#575f6b"/>
+</svg>

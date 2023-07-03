@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TkitaCaption</title>
+  <link href="css/common.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  
+  <div id="login-window">
+    <!-- <div id="login-top" class="window-select">
+      <div class="drag-empty"></div>
+      <a href="" class="w-lower"></a>
+      <a href="" class="w-close"></a>
+    </div> -->
+    <!-- <div class="window-setting">
+      <div class="top-logo">
+        <p>Tkita caption</p>
+      </div>
+      <div class="window-act">
+        <a href="" class="w-lower"></a>
+        <a href="" class="w-resize"></a>
+        <a href="" class="w-close"></a>
+      </div>
+    </div> -->
+    <div id="login-section">
+      <div id="login-logo"></div>
+      <form>
+        <div class="login-input-box">
+          <p>라이센스 등록</p>
+          <div class="login-input-box-r">
+            <input type="password" id="license-login-input" class="login-input" placeholder="라이센스번호 입력" />
+            <button class="change-btn" id="password-change-btn"></button>
+          </div>
+        </div>
+        <a href="" class="login-btn" style="margin: 70px 0 50px;">등록하기</a>
+      </form>
+      <div class="login-error">
+        <p>라이센스번호 20자리 숫자를 입력해주세요</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(".login-btn").click(function(){
+        if($(".login-input").val().length == 0){
+            $(".login-error").css({display: "block"});
+            return false
+        }else{
+          $(".login-error").css({display: "none"});
+        }
+    });
+  </script>
+
+  <script src="script/script.js"></script>
+</body>
+</html>
